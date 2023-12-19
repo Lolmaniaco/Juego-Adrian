@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7ag0l81mt8yv"]
+
+[ext_resource type="Texture2D" uid="uid://dbtpbnq06uvl4" path="res://Assets/Sprites/TestFloor/tile_bricksRed.png" id="1_vhr7d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3rds4"]
+size = Vector2(17.1965, 17.1965)
+
+[node name="Brick" type="StaticBody2D"]
+position = Vector2(-1, -1)
+scale = Vector2(4.65211, 4.65211)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0.214956, 0.214956)
+scale = Vector2(0.133643, 0.133643)
+texture = ExtResource("1_vhr7d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.214956, 0.214956)
+shape = SubResource("RectangleShape2D_3rds4")

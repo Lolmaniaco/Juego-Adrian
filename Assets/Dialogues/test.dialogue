@@ -1,0 +1,27 @@
+~ start
+
+Guturu: Oh, I used to be an adventurer like you until an arrow hit me in the knee.
+- Por qué estás hablando en inglés, Guturu?
+	Guturu: I can't understand what you say, my friend.
+- Es eso una referencia a Dofus?
+	Guturu: Oh, yeah, I like Dofus a lot!
+- ...
+Guturu: Now, if you let me be... I'll be selling some melones, bye.
+do emit("dialogue_ended", "Guturu")
+=> END!
+
+~ start2
+
+Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- First one
+	Nathan: You picked the first one.
+- Second one
+	Nathan: You picked the second one.
+- Start again => start
+- End the conversation 
+do emit("test_signal", "signal emitted") 
+=> END
+Nathan: For more information see the online documentation.
+do emit("test_signal", "signal emitted")
+=> END

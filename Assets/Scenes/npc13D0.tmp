@@ -1,0 +1,191 @@
+[gd_scene load_steps=16 format=3 uid="uid://dyvoekdl5sppi"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/npc.gd" id="1_bxdl8"]
+[ext_resource type="Texture2D" uid="uid://dpadv4ut7m2xb" path="res://Assets/Sprites/NPC/character_malePerson_idle.png" id="1_ccwyw"]
+[ext_resource type="Texture2D" uid="uid://bhunihpnyh0s3" path="res://Assets/Sprites/NPC/character_malePerson_cheer0.png" id="1_fnggv"]
+[ext_resource type="Texture2D" uid="uid://d270ut2i7ox17" path="res://Assets/Sprites/NPC/character_malePerson_cheer1.png" id="2_ecpdd"]
+[ext_resource type="Texture2D" uid="uid://iypaeedx4lp7" path="res://Assets/Sprites/NPC/character_malePerson_drag.png" id="4_jl210"]
+[ext_resource type="Texture2D" uid="uid://b2jbifi235ykg" path="res://Assets/Sprites/NPC/character_malePerson_wide.png" id="5_38gp5"]
+[ext_resource type="Texture2D" uid="uid://c3krkqpeeg4i2" path="res://Assets/Sprites/NPC/character_malePerson_side.png" id="5_eb62b"]
+[ext_resource type="Texture2D" uid="uid://4vknk821d7cc" path="res://Assets/Sprites/NPC/character_malePerson_interact.png" id="6_tm2d8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1wrlw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fnggv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ecpdd")
+}],
+"loop": true,
+"name": &"cheer",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ccwyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jl210")
+}],
+"loop": true,
+"name": &"explaining",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ccwyw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_eb62b")
+}],
+"loop": true,
+"name": &"side",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ccwyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_38gp5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tm2d8")
+}],
+"loop": true,
+"name": &"speaking",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_f2060"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_aobg7"]
+resource_name = "side"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"side"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_nmbkn"]
+resource_name = "speaking"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"speaking"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mpxfk"]
+_data = {
+"idle": SubResource("Animation_f2060"),
+"side": SubResource("Animation_aobg7"),
+"speaking": SubResource("Animation_nmbkn")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x0ccf"]
+radius = 13.0
+height = 56.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_26ky5"]
+size = Vector2(154, 55.5)
+
+[node name="NPC" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_bxdl8")
+metadata/_edit_horizontal_guides_ = [-38.0]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(5.96046e-08, -7.33332)
+scale = Vector2(0.270833, 0.270833)
+sprite_frames = SubResource("SpriteFrames_1wrlw")
+animation = &"speaking"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mpxfk")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_x0ccf")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("RectangleShape2D_26ky5")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]

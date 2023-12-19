@@ -1,0 +1,185 @@
+[gd_scene load_steps=12 format=3 uid="uid://brfwokkxbqdni"]
+
+[ext_resource type="Texture2D" uid="uid://bkpn0pww6lalj" path="res://Assets/Sprites/Elevator/switchGreen_mid.png" id="1_h46ek"]
+[ext_resource type="Script" path="res://Assets/Scenes/World/elevator.gd" id="1_k3gy4"]
+[ext_resource type="Texture2D" uid="uid://d2ift6h4lffma" path="res://Assets/Sprites/Elevator/spring.png" id="1_uxl6u"]
+[ext_resource type="Texture2D" uid="uid://b6dpejjstb6m4" path="res://Assets/Sprites/Elevator/switchGreen_left.png" id="4_4o803"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cs8vp"]
+size = Vector2(38.022, 33.9396)
+
+[sub_resource type="Animation" id="Animation_dnvgu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.145875, -45.9998)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_h46ek")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:progress_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pwpt2"]
+resource_name = "activate_lever"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("1_h46ek"), ExtResource("4_4o803")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0.145875, -45.9998), Vector2(-2.7536, -44.0161)]
+}
+
+[sub_resource type="Animation" id="Animation_2u0xn"]
+resource_name = "elevator_back"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_lw5bw"]
+resource_name = "elevator_go"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_qwpsk"]
+resource_name = "idle_lever"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area2D/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_4o803"), ExtResource("1_h46ek")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area2D/Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(-2.7536, -44.0161), Vector2(0.145875, -45.9998)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ds17j"]
+_data = {
+"RESET": SubResource("Animation_dnvgu"),
+"activate_lever": SubResource("Animation_pwpt2"),
+"elevator_back": SubResource("Animation_2u0xn"),
+"elevator_go": SubResource("Animation_lw5bw"),
+"idle_lever": SubResource("Animation_qwpsk")
+}
+
+[node name="Elevator" type="Path2D"]
+script = ExtResource("1_k3gy4")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(0, -1)
+rotation = -1.5708
+rotates = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PathFollow2D"]
+rotation = 1.5708
+collision_mask = 2
+
+[node name="Area2D" type="Area2D" parent="PathFollow2D/StaticBody2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/StaticBody2D/Area2D"]
+position = Vector2(0.214057, -53.9696)
+shape = SubResource("RectangleShape2D_cs8vp")
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/StaticBody2D/Area2D"]
+position = Vector2(0.145875, -45.9998)
+scale = Vector2(0.352077, 0.352077)
+texture = ExtResource("1_h46ek")
+
+[node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/StaticBody2D"]
+texture = ExtResource("1_uxl6u")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="PathFollow2D/StaticBody2D"]
+polygon = PackedVector2Array(-70.8823, -37.225, 72.117, -36.7715, 71.9806, 6.2283, 50.9807, 6.1617, 28.8793, 38.0918, -25.1204, 37.9205, -47.0156, 4.85093, -71.0155, 4.77482)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow2D/StaticBody2D"]
+libraries = {
+"": SubResource("AnimationLibrary_ds17j")
+}
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D/StaticBody2D"]
+position = Vector2(0.363702, -64.999)
+
+[connection signal="body_entered" from="PathFollow2D/StaticBody2D/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="PathFollow2D/StaticBody2D/Area2D" to="." method="_on_area_2d_body_exited"]

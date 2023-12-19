@@ -1,0 +1,133 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4da0xm0dtpli"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/UI/start_menu.gd" id="2_8j7jo"]
+[ext_resource type="Theme" uid="uid://bpigfvg62fra7" path="res://Assets/themes/default_theme.tres" id="2_yxab2"]
+
+[node name="start_menu" type="ColorRect"]
+modulate = Color(1, 1, 1, 0.501961)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_yxab2")
+color = Color(0, 0, 0, 1)
+script = ExtResource("2_8j7jo")
+
+[node name="main_menu" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -183.0
+offset_right = 1.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="menu" type="VBoxContainer" parent="main_menu"]
+layout_mode = 2
+
+[node name="resume" type="Button" parent="main_menu/menu"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Resume"
+language = "en_US"
+
+[node name="options" type="Button" parent="main_menu/menu"]
+layout_mode = 2
+text = "Options"
+language = "en_US"
+metadata/_edit_use_anchors_ = true
+
+[node name="exit" type="Button" parent="main_menu/menu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Exit"
+language = "en_US"
+
+[node name="confirm_quit" type="VBoxContainer" parent="main_menu"]
+visible = false
+layout_direction = 1
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="main_menu/confirm_quit"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="CenterContainer" type="CenterContainer" parent="main_menu/confirm_quit/MarginContainer"]
+layout_mode = 2
+
+[node name="message" type="RichTextLabel" parent="main_menu/confirm_quit/MarginContainer/CenterContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[center] Are you sure you want to exit the game?"
+fit_content = true
+
+[node name="Container" type="HBoxContainer" parent="main_menu/confirm_quit"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="yes" type="Button" parent="main_menu/confirm_quit/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Yes"
+language = "en_US"
+
+[node name="no" type="Button" parent="main_menu/confirm_quit/Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "No
+"
+language = "en_US"
+
+[node name="ColorRect" type="ColorRect" parent="main_menu/confirm_quit"]
+layout_mode = 2
+
+[node name="options_menu" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="options_menu"]
+layout_mode = 2
+
+[node name="main_quest" type="CheckButton" parent="options_menu/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+button_pressed = true
+text = "Hide main quest"
+
+[node name="secondary_quests" type="CheckButton" parent="options_menu/VBoxContainer"]
+layout_mode = 2
+button_pressed = true
+button_mask = 3
+text = "Hide secondary quests"
+
+[node name="Back" type="Button" parent="options_menu/VBoxContainer"]
+layout_mode = 2
+text = "Back"
+language = "en_US"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="main_menu/menu/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="main_menu/menu/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="main_menu/menu/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="main_menu/confirm_quit/Container/yes" to="." method="_on_yes_pressed"]
+[connection signal="pressed" from="main_menu/confirm_quit/Container/no" to="." method="_on_no_pressed"]
+[connection signal="toggled" from="options_menu/VBoxContainer/main_quest" to="." method="_on_main_quest_toggled"]
+[connection signal="toggled" from="options_menu/VBoxContainer/secondary_quests" to="." method="_on_secondary_quests_toggled"]
+[connection signal="pressed" from="options_menu/VBoxContainer/Back" to="." method="_on_back_pressed"]

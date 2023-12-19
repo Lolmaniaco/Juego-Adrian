@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2qr0iihsuptd"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/World/door.gd" id="1_10dol"]
+[ext_resource type="Texture2D" uid="uid://lfsu8myhmfpn" path="res://Assets/Sprites/TestFloor/tiles_packed.png" id="1_24jcb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mt1m3"]
+size = Vector2(6, 25.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y4do5"]
+size = Vector2(54, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mkta"]
+atlas = ExtResource("1_24jcb")
+region = Rect2(180, 99, 18, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thl5l"]
+atlas = ExtResource("1_24jcb")
+region = Rect2(167, 65, 8, 26)
+
+[node name="Door" type="StaticBody2D"]
+scale = Vector2(2.45, 2.45)
+collision_mask = 2
+script = ExtResource("1_10dol")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13.25)
+shape = SubResource("RectangleShape2D_mt1m3")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -13)
+shape = SubResource("RectangleShape2D_y4do5")
+
+[node name="OpenedDoorSpriteLeft" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-9.79592, -15.102)
+scale = Vector2(1.07551, 1.07551)
+texture = SubResource("AtlasTexture_4mkta")
+
+[node name="OpenedDoorSpriteRight" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(9.79592, -15.102)
+scale = Vector2(1.07551, 1.07551)
+texture = SubResource("AtlasTexture_4mkta")
+flip_h = true
+
+[node name="ClosedDoorSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -13)
+texture = SubResource("AtlasTexture_thl5l")
+
+[node name="Hysteresis" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Hysteresis" to="." method="_on_hysteresis_timeout"]

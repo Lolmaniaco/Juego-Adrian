@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://b173tn12rqd1l"]
+
+[node name="Mission" type="RichTextLabel"]
+offset_right = 375.0
+offset_bottom = 46.0
+bbcode_enabled = true
+text = "[b] MISIÓN RANDOM [/b]
+Prueba de misión corta"
+fit_content = true
+scroll_active = false

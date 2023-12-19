@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://p6a4vise2vjr"]
+
+[ext_resource type="Texture2D" uid="uid://bf33lt2utlon3" path="res://Assets/Sprites/spikesLow.png" id="1_bqwk2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jxbi8"]
+size = Vector2(28, 11)
+
+[node name="Danger" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_jxbi8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.19209e-07, -6)
+scale = Vector2(0.423077, 0.423077)
+texture = ExtResource("1_bqwk2")

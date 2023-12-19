@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://deqpr6gqjqcms"]
+
+[ext_resource type="FontFile" uid="uid://cpwlm2it6qqh" path="res://Assets/TwinMarker.ttf" id="1_1jhrw"]
+
+[resource]
+RichTextLabel/colors/default_color = Color(0, 0, 0, 1)
+RichTextLabel/font_sizes/normal_font_size = 50
+RichTextLabel/fonts/normal_font = ExtResource("1_1jhrw")
