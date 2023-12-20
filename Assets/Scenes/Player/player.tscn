@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://d2tnjxn314xsw"]
+[gd_scene load_steps=36 format=3 uid="uid://d2tnjxn314xsw"]
 
 [ext_resource type="Texture2D" uid="uid://bk2r7ks6o3hwo" path="res://Assets/Sprites/Player/character_robot_duck.png" id="1_hjs3f"]
 [ext_resource type="Script" path="res://Assets/Scenes/Player/player.gd" id="1_ty0s1"]
@@ -20,7 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://be6pt52ksxrb" path="res://Assets/Sprites/Player/character_robot_walk6.png" id="15_7h8ld"]
 [ext_resource type="Texture2D" uid="uid://cr34s2niiin8n" path="res://Assets/Sprites/Player/character_robot_walk7.png" id="16_jvqco"]
 [ext_resource type="Script" path="res://Assets/Scripts/FiniteStateMachine.gd" id="20_k01i1"]
-[ext_resource type="Script" path="res://Assets/Scenes/Player/IdleState.gd" id="21_6pwi5"]
+[ext_resource type="Script" path="res://Assets/Scenes/Player/PlayerIdleState.gd" id="21_r63xo"]
+[ext_resource type="Script" path="res://Assets/Scenes/Player/PlayerMovingState.gd" id="22_ki55o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_18ing"]
 animations = [{
@@ -505,7 +506,13 @@ script = ExtResource("20_k01i1")
 state = NodePath("PlayerIdleState")
 
 [node name="PlayerIdleState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("player", "animator")]
-script = ExtResource("21_6pwi5")
+script = ExtResource("21_r63xo")
+player = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+
+[node name="PlayerMovingState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animatedSprite", "player", "animator")]
+script = ExtResource("22_ki55o")
+animatedSprite = NodePath("../../PlayerAnimatedSprite")
 player = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 

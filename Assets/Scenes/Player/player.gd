@@ -42,20 +42,14 @@ func _physics_process(delta) -> void:
 		action_flag = false
 		state = SPEAKING
 
-	var player_move
-	if gravity < 0:
-		player_move = Input.get_axis("KeyRight", "KeyLeft")	
-	else:
-		player_move = Input.get_axis("KeyLeft", "KeyRight")
-	flip_player_sprite(player_move)
 
-	match state:
-		IDLE: idle_state(player_move)
-		MOVING: moving_state(player_move)
-		CROUCH: crouch_state(player_move)
-		CROUCH_MOVING: crouch_moving_state(player_move)
-		GRAVITY: gravity_swap_state()
-		SPEAKING: speaking_state()
+	#match state:
+		#IDLE: idle_state(player_move)
+		#MOVING: moving_state(player_move)
+		#CROUCH: crouch_state(player_move)
+		#CROUCH_MOVING: crouch_moving_state(player_move)
+		#GRAVITY: gravity_swap_state()
+		#SPEAKING: speaking_state()
 
 	move_and_slide()
 
@@ -144,14 +138,6 @@ func speaking_state() -> void:
 	if velocity.x != 0:
 		velocity.x = move_toward(velocity.x, 0, SPEED/10)
 
-func flip_player_sprite(player_move) -> void:
-	if gravity < 0:
-		player_move *= -1
-
-	if player_move == -1:
-		playerAnimatedSprite.flip_h = true
-	elif player_move == 1:
-		playerAnimatedSprite.flip_h = false
 
 func apply_gravity(delta) -> void:
 	velocity.y += gravity * delta
