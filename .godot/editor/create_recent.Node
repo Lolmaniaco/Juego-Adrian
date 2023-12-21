@@ -1,3 +1,5 @@
+PlayerSpeakingState
+PlayerGravityState
 PlayerMovingState
 PlayerIdleState
 State
@@ -11,5 +13,3 @@ CanvasModulate
 VBoxContainer
 FlowContainer
 Timer
-CollisionShape2D
-Sprite2D

@@ -10,6 +10,11 @@ class_name Player
 @onready var change_gravity_timer = $ChangeGravityTimer
 @onready var safe_animation = $SafeAnimation
 
+@onready var FSM = $FiniteStateMachine as FiniteStateMachine
+@onready var player_idle_state = $FiniteStateMachine/PlayerIdleState as PlayerIdleState
+@onready var player_moving_state = $FiniteStateMachine/PlayerMovingState as PlayerMovingState
+@onready var player_gravity_state = $FiniteStateMachine/PlayerGravityState as PlayerGravityState
+
 enum {IDLE, MOVING, CROUCH, CROUCH_MOVING, GRAVITY, SPEAKING} 
 var state_names = ["IDLE", "MOVING", "CROUCH", "CROUCH_MOVING", "GRAVITY", "SPEAKING"]
 var state = IDLE
@@ -25,6 +30,14 @@ var action_flag:bool = false
 
 func _ready() -> void:
 	Events.dialogue_ended.connect(_on_dialogue_ended)
+	player_idle_state.player_moving.connect(FSM.change_state.bind(player_moving_state))
+	player_idle_state.change_gravity.connect(FSM.change_state.bind(player_gravity_state))
+	
+	player_moving_state.change_gravity.connect(FSM.change_state.bind(player_gravity_state))
+	player_moving_state.player_stopped.connect(FSM.change_state.bind(player_idle_state))
+	
+	player_gravity_state.gravity_changed.connect(FSM.change_state.bind(player_idle_state))
+	
 	change_gravity_timer.start()
 
 func _on_dialogue_ended(_var: String) -> void:
@@ -150,11 +163,6 @@ func connect_camera(camera) -> void:
 	var camera_path = camera.get_path()
 	remoteTransform.remote_path = camera_path
 	remoteTransform.rotation = camera.rotation
-
-func _on_animation_player_animation_finished(anim_name) -> void:
-	if anim_name == "change_gravity_up" or anim_name == "change_gravity_down":
-		remoteTransform.rotate(PI)
-		gravity *= -1
 
 func _on_detector_area_entered(area) -> void:
 	if area.name == "NPCDetector":

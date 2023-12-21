@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://d2tnjxn314xsw"]
+[gd_scene load_steps=37 format=3 uid="uid://d2tnjxn314xsw"]
 
 [ext_resource type="Texture2D" uid="uid://bk2r7ks6o3hwo" path="res://Assets/Sprites/Player/character_robot_duck.png" id="1_hjs3f"]
 [ext_resource type="Script" path="res://Assets/Scenes/Player/player.gd" id="1_ty0s1"]
@@ -23,7 +23,6 @@
 [ext_resource type="Script" path="res://Assets/Scenes/Player/PlayerIdleState.gd" id="21_r63xo"]
 [ext_resource type="Script" path="res://Assets/Scenes/Player/PlayerMovingState.gd" id="22_ki55o"]
 [ext_resource type="Script" path="res://Assets/Scenes/Player/PlayerGravityState.gd" id="23_tveah"]
-[ext_resource type="Script" path="res://Assets/Scenes/Player/PlayerSpeakingState.gd" id="24_udjbm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_18ing"]
 animations = [{
@@ -507,16 +506,14 @@ one_shot = true
 script = ExtResource("20_k01i1")
 state = NodePath("PlayerIdleState")
 
-[node name="PlayerIdleState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("detector", "player", "animator")]
+[node name="PlayerIdleState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("player", "animator")]
 script = ExtResource("21_r63xo")
-detector = NodePath("../../Detector")
 player = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 
-[node name="PlayerMovingState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animatedSprite", "detector", "player", "animator")]
+[node name="PlayerMovingState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animatedSprite", "player", "animator")]
 script = ExtResource("22_ki55o")
 animatedSprite = NodePath("../../PlayerAnimatedSprite")
-detector = NodePath("../../Detector")
 player = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 
@@ -526,12 +523,8 @@ remoteTransform = NodePath("../../RemoteTransform2D")
 player = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 
-[node name="PlayerSpeakingState" type="Node" parent="FiniteStateMachine"]
-script = ExtResource("24_udjbm")
-
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="area_entered" from="Detector" to="." method="_on_detector_area_entered"]
-[connection signal="area_entered" from="Detector" to="FiniteStateMachine/PlayerIdleState" method="_on_detector_area_entered"]
 [connection signal="area_exited" from="Detector" to="." method="_on_detector_area_exited"]
-[connection signal="area_exited" from="Detector" to="FiniteStateMachine/PlayerIdleState" method="_on_detector_area_exited"]
 [connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
