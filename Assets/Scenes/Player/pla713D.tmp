@@ -489,7 +489,7 @@ disabled = true
 
 [node name="Detector" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 7
+collision_mask = 5
 
 [node name="DetectorCS" type="CollisionShape2D" parent="Detector"]
 position = Vector2(0, 0.5)
@@ -497,6 +497,10 @@ shape = SubResource("RectangleShape2D_wm3ne")
 
 [node name="ChangeGravityTimer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
+
+[node name="SafeAnimation" type="Timer" parent="."]
+wait_time = 0.1
 one_shot = true
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
@@ -529,11 +533,15 @@ player = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 detector = NodePath("../../Detector")
 
+[connection signal="area_entered" from="Detector" to="." method="_on_detector_area_entered"]
 [connection signal="area_entered" from="Detector" to="FiniteStateMachine/PlayerIdleState" method="_on_detector_area_entered"]
 [connection signal="area_entered" from="Detector" to="FiniteStateMachine/PlayerMovingState" method="_on_detector_area_entered"]
+[connection signal="area_exited" from="Detector" to="." method="_on_detector_area_exited"]
 [connection signal="area_exited" from="Detector" to="FiniteStateMachine/PlayerIdleState" method="_on_detector_area_exited"]
 [connection signal="area_exited" from="Detector" to="FiniteStateMachine/PlayerMovingState" method="_on_detector_area_exited"]
+[connection signal="body_entered" from="Detector" to="." method="_on_detector_body_entered"]
 [connection signal="body_entered" from="Detector" to="FiniteStateMachine/PlayerIdleState" method="_on_detector_body_entered"]
 [connection signal="body_entered" from="Detector" to="FiniteStateMachine/PlayerMovingState" method="_on_detector_body_entered"]
+[connection signal="body_exited" from="Detector" to="." method="_on_detector_body_exited"]
 [connection signal="body_exited" from="Detector" to="FiniteStateMachine/PlayerIdleState" method="_on_detector_body_exited"]
 [connection signal="body_exited" from="Detector" to="FiniteStateMachine/PlayerMovingState" method="_on_detector_body_exited"]

@@ -1,13 +1,11 @@
 res://Assets/Scenes/Player/player.tscn
 res://Assets/Scenes/NPCs/npc.gd
 res://Assets/themes/default_theme.tres
-res://Assets/Scenes/Player/PlayerMovingState.gd
 res://Assets/Scenes/main.tscn
 res://Assets/Scenes/NPCs/npc.tscn
-res://Assets/Scenes/Player/player.gd
+res://Assets/Scenes/Enemies/danger.tscn
 res://Assets/Scenes/Player/PlayerIdleState.gd
-res://Assets/Scripts/FiniteStateMachine.gd
-res://Assets/Scripts/State.gd
-res://Assets/Scripts/Events.gd
-res://Assets/Scenes/Player/PlayerGravityState.gd
+res://Assets/Scenes/Player/player.gd
 res://Assets/Scenes/Player/PlayerSpeakingState.gd
+res://Assets/Scenes/Player/PlayerMovingState.gd
+res://Assets/Scripts/Events.gd

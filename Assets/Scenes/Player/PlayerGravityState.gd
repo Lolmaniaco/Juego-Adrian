@@ -3,6 +3,8 @@ class_name PlayerGravityState
 
 @export var remoteTransform: RemoteTransform2D
 
+@onready var change_gravity_timer = $"../../ChangeGravityTimer"
+
 signal gravity_changed
 
 func _ready() -> void:
@@ -17,3 +19,6 @@ func _enter_state() -> void:
 	remoteTransform.rotate(PI)
 	player.gravity *= -1
 	gravity_changed.emit()
+
+func _exit_state():
+	change_gravity_timer.start()

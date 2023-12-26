@@ -35,7 +35,9 @@ func normal_state():
 			start_menu.pause_game()
 
 func death_report_state():
+	
 	if Input.is_action_just_pressed("ChangeGravity"):
+		print("1")
 		get_tree().reload_current_scene()
 
 func _on_dialogue_ended(NPC_name:String):
