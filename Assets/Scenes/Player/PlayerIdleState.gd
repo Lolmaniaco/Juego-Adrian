@@ -9,15 +9,18 @@ signal player_moving
 
 func _ready() -> void:
 	set_physics_process(false)
+	set_block_signals(true)
 	set_process_unhandled_input(false)
 
 func _enter_state() -> void:
 	Events.player_move = 0
 	set_physics_process(true)
+	set_block_signals(false)
 	set_process_unhandled_input(true)
 
 func _exit_state() -> void:
 	set_physics_process(false)
+	set_block_signals(true)
 	set_process_unhandled_input(false)
 	animator.stop()
 
@@ -34,8 +37,8 @@ func _unhandled_input(event) -> void:
 				player_moving.emit()
 
 func _physics_process(_delta) -> void:
-	if player.velocity.x != 0:
-		player.velocity.x = move_toward(player.velocity.x, 0, SPEED/10)
+	if character.velocity.x != 0:
+		character.velocity.x = move_toward(character.velocity.x, 0, SPEED/float(10))
 
 	if not Events.crouched:
 		if not animator.is_playing(): 
@@ -49,7 +52,8 @@ func _on_detector_area_entered(area):
 	
 	if area.get_collision_layer() == 4:
 		Events.player_dead.emit(area.name)
-		player.queue_free()
+		print(area.name)
+		character.queue_free()
 
 func _on_detector_area_exited(area):
 	if area.name == "NPCDetector":

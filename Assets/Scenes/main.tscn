@@ -11,8 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://c2qr0iihsuptd" path="res://Assets/Scenes/World/door.tscn" id="5_ug72b"]
 [ext_resource type="Texture2D" uid="uid://lfsu8myhmfpn" path="res://Assets/Sprites/TestFloor/tiles_packed.png" id="6_5nrdo"]
 [ext_resource type="PackedScene" uid="uid://dyvoekdl5sppi" path="res://Assets/Scenes/NPCs/npc.tscn" id="7_trran"]
-[ext_resource type="Resource" uid="uid://cbpv4qym1mm0d" path="res://Assets/Dialogues/test.dialogue" id="10_dk8ax"]
 [ext_resource type="PackedScene" uid="uid://p6a4vise2vjr" path="res://Assets/Scenes/Enemies/danger.tscn" id="12_7ppw7"]
+[ext_resource type="PackedScene" uid="uid://dovy5ani47gw1" path="res://Assets/Scenes/Enemies/flamethrower.tscn" id="13_ge8vq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_12ref"]
 size = Vector2(1468, 132)
@@ -1293,7 +1293,7 @@ sources/1 = SubResource("TileSetAtlasSource_vqnh0")
 
 [sub_resource type="Curve2D" id="Curve2D_wmm3r"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 124, 85, 0, 0, 0, 0, 363, 203, 0, 0, 0, 0, 367, -89)
+"points": PackedVector2Array(0, 0, 0, 0, 124, 85, 0, 0, 0, 0, 117, -79, 0, 0, 0, 0, 111, -311)
 }
 point_count = 3
 
@@ -1329,15 +1329,6 @@ collision_mask = 2
 position = Vector2(9, 40)
 shape = SubResource("RectangleShape2D_12ref")
 
-[node name="TPsEmergencia2" type="Area2D" parent="World/TPs"]
-position = Vector2(501, -13)
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="World/TPs/TPsEmergencia2"]
-position = Vector2(9, 40)
-shape = SubResource("RectangleShape2D_12ref")
-
 [node name="Brick2" parent="World" instance=ExtResource("4_ea0d1")]
 position = Vector2(667, 496)
 rotation = 1.0472
@@ -1362,7 +1353,6 @@ layer_1/tile_data = PackedInt32Array()
 
 [node name="NPC" parent="World" instance=ExtResource("7_trran")]
 position = Vector2(382, 406)
-dialogue_resource = ExtResource("10_dk8ax")
 NPC_name = "Berta"
 
 [node name="Elevator" parent="World" instance=ExtResource("5_34767")]
@@ -1370,10 +1360,12 @@ position = Vector2(752, 406)
 curve = SubResource("Curve2D_wmm3r")
 ANIM_SPEED = 0.5
 
-[node name="Danger" parent="." instance=ExtResource("12_7ppw7")]
+[node name="Spikes" parent="." instance=ExtResource("12_7ppw7")]
 position = Vector2(745, 456)
+
+[node name="Flamethrower" parent="." instance=ExtResource("13_ge8vq")]
+position = Vector2(234, 491)
 
 [connection signal="show_main_quest" from="UI/start_menu" to="UI/QuestsBox" method="_on_start_menu_show_main_quest"]
 [connection signal="show_secondary_quests" from="UI/start_menu" to="UI/QuestsBox" method="_on_start_menu_show_secondary_quests"]
 [connection signal="body_entered" from="World/TPs/TPsEmergencia" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="World/TPs/TPsEmergencia2" to="." method="_on_area_2d_body_entered"]

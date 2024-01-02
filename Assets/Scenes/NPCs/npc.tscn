@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dyvoekdl5sppi"]
+[gd_scene load_steps=20 format=3 uid="uid://dyvoekdl5sppi"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/NPCs/npc.gd" id="1_bxdl8"]
 [ext_resource type="Texture2D" uid="uid://dpadv4ut7m2xb" path="res://Assets/Sprites/NPC/character_malePerson_idle.png" id="1_ccwyw"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://b2jbifi235ykg" path="res://Assets/Sprites/NPC/character_malePerson_wide.png" id="5_38gp5"]
 [ext_resource type="Texture2D" uid="uid://c3krkqpeeg4i2" path="res://Assets/Sprites/NPC/character_malePerson_side.png" id="5_eb62b"]
 [ext_resource type="Texture2D" uid="uid://4vknk821d7cc" path="res://Assets/Sprites/NPC/character_malePerson_interact.png" id="6_tm2d8"]
+[ext_resource type="Script" path="res://Assets/Scripts/FiniteStateMachine.gd" id="9_ssoo6"]
+[ext_resource type="Script" path="res://Assets/Scenes/NPCs/NPCIdleState.gd" id="10_eay3d"]
+[ext_resource type="Script" path="res://Assets/Scenes/NPCs/NPCSpeakingState.gd" id="11_6df6u"]
+[ext_resource type="Resource" uid="uid://cbpv4qym1mm0d" path="res://Assets/Dialogues/test.dialogue" id="12_0to05"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1wrlw"]
 animations = [{
@@ -193,6 +197,25 @@ shape = SubResource("RectangleShape2D_26ky5")
 wait_time = 0.05
 one_shot = true
 
-[connection signal="body_entered" from="NPCDetector" to="." method="_on_NPC_detector_body_entered"]
-[connection signal="body_exited" from="NPCDetector" to="." method="_on_NPC_detector_body_exited"]
-[connection signal="timeout" from="Hysteresis" to="." method="_on_hysteresis_timeout"]
+[node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("9_ssoo6")
+state = NodePath("NPCIdleState")
+
+[node name="NPCIdleState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("hysteresis", "animatedSprite", "character", "animator", "detector")]
+script = ExtResource("10_eay3d")
+hysteresis = NodePath("../../Hysteresis")
+animatedSprite = NodePath("../../AnimatedSprite2D")
+character = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+detector = NodePath("../../NPCDetector")
+
+[node name="NPCSpeakingState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("character", "animator", "detector")]
+script = ExtResource("11_6df6u")
+dialogue_resource = ExtResource("12_0to05")
+character = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+detector = NodePath("../../NPCDetector")
+
+[connection signal="body_entered" from="NPCDetector" to="FiniteStateMachine/NPCIdleState" method="_on_npc_detector_body_entered"]
+[connection signal="body_exited" from="NPCDetector" to="FiniteStateMachine/NPCIdleState" method="_on_npc_detector_body_exited"]
+[connection signal="timeout" from="Hysteresis" to="FiniteStateMachine/NPCIdleState" method="_on_hysteresis_timeout"]

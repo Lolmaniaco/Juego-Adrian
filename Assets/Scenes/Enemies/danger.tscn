@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jxbi8"]
 size = Vector2(28, 11)
 
-[node name="Danger" type="Area2D"]
+[node name="Spikes" type="Area2D"]
 collision_layer = 4
 collision_mask = 0
 

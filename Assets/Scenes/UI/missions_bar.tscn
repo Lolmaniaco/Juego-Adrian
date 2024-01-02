@@ -14,27 +14,3 @@ script = ExtResource("1_ehi4g")
 
 [node name="secondary_missions" type="VBoxContainer" parent="."]
 layout_mode = 2
-
-[node name="Mission1" type="RichTextLabel" parent="secondary_missions"]
-layout_mode = 2
-bbcode_enabled = true
-text = "[b] MISIÓN RANDOM [/b]
-Prueba de misión corta"
-fit_content = true
-scroll_active = false
-
-[node name="Mission2" type="RichTextLabel" parent="secondary_missions"]
-layout_mode = 2
-bbcode_enabled = true
-text = "[b] MISIÓN SECUNDARIA [/b]
-Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto."
-fit_content = true
-scroll_active = false
-
-[node name="Mission3" type="RichTextLabel" parent="secondary_missions"]
-layout_mode = 2
-bbcode_enabled = true
-text = "[b] MISIÓN TERCIARIA [/b]
-Desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen."
-fit_content = true
-scroll_active = false

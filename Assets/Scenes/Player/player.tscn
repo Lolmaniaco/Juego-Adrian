@@ -503,29 +503,29 @@ one_shot = true
 script = ExtResource("20_k01i1")
 state = NodePath("PlayerIdleState")
 
-[node name="PlayerIdleState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("player", "animator", "detector")]
+[node name="PlayerIdleState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("character", "animator", "detector")]
 script = ExtResource("21_r63xo")
-player = NodePath("../..")
+character = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 detector = NodePath("../../Detector")
 
-[node name="PlayerMovingState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animatedSprite", "player", "animator", "detector")]
+[node name="PlayerMovingState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("animatedSprite", "character", "animator", "detector")]
 script = ExtResource("22_ki55o")
 animatedSprite = NodePath("../../PlayerAnimatedSprite")
-player = NodePath("../..")
+character = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 detector = NodePath("../../Detector")
 
-[node name="PlayerGravityState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("remoteTransform", "player", "animator", "detector")]
+[node name="PlayerGravityState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("remoteTransform", "character", "animator", "detector")]
 script = ExtResource("23_tveah")
 remoteTransform = NodePath("../../RemoteTransform2D")
-player = NodePath("../..")
+character = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 detector = NodePath("../../Detector")
 
-[node name="PlayerSpeakingState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("player", "animator", "detector")]
+[node name="PlayerSpeakingState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("character", "animator", "detector")]
 script = ExtResource("24_udjbm")
-player = NodePath("../..")
+character = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 detector = NodePath("../../Detector")
 

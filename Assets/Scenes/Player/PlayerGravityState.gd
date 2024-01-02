@@ -11,13 +11,13 @@ func _ready() -> void:
 	set_physics_process(false)
 
 func _enter_state() -> void:
-	if player.gravity >= 0:
+	if character.gravity >= 0:
 		animator.play("change_gravity_up")
 	else:
 		animator.play("change_gravity_down")
 	await animator.animation_finished
 	remoteTransform.rotate(PI)
-	player.gravity *= -1
+	character.gravity *= -1
 	gravity_changed.emit()
 
 func _exit_state():
