@@ -29,7 +29,7 @@ canvas_items/debug_redraw_color=Color(1, 0.2, 0.2, 0.501961)
 [dialogue_manager]
 
 general/balloon_path="res://Assets/Dialogues/balloon.tscn"
-general/states=["Events"]
+general/states=["Events", "Journal"]
 
 [display]
 

@@ -19,6 +19,7 @@ func _ready() -> void:
 	
 	player_moving_state.change_gravity.connect(FSM.change_state.bind(player_gravity_state))
 	player_moving_state.player_stopped.connect(FSM.change_state.bind(player_idle_state))
+	player_moving_state.player_speaking.connect(FSM.change_state.bind(player_speaking_state))
 	
 	player_gravity_state.gravity_changed.connect(FSM.change_state.bind(player_idle_state))
 	

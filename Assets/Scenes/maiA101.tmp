@@ -1302,8 +1302,6 @@ point_count = 3
 process_mode = 3
 position = Vector2(-2, 0)
 script = ExtResource("1_vr414")
-metadata/_edit_horizontal_guides_ = [482.0]
-metadata/_edit_vertical_guides_ = [607.0]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -1333,11 +1331,11 @@ position = Vector2(9, 40)
 shape = SubResource("RectangleShape2D_12ref")
 
 [node name="Brick2" parent="World" instance=ExtResource("4_ea0d1")]
-position = Vector2(1075, 429)
+position = Vector2(667, 496)
 rotation = 1.0472
 
 [node name="Brick" parent="World" instance=ExtResource("4_ea0d1")]
-position = Vector2(1006, 468)
+position = Vector2(598, 535)
 rotation = 1.0472
 
 [node name="Door" parent="World" instance=ExtResource("5_ug72b")]
@@ -1363,16 +1361,14 @@ curve = SubResource("Curve2D_wmm3r")
 ANIM_SPEED = 0.5
 
 [node name="Spikes" parent="." instance=ExtResource("12_7ppw7")]
-position = Vector2(1302, 408)
+position = Vector2(745, 456)
 
 [node name="Flamethrower" parent="." instance=ExtResource("13_ge8vq")]
 position = Vector2(234, 491)
 
 [node name="Watermelon" parent="." instance=ExtResource("14_xpalw")]
-position = Vector2(609, 482)
 
 [node name="Watermelon2" parent="." instance=ExtResource("14_xpalw")]
-position = Vector2(-50, 490)
 
 [connection signal="show_main_quest" from="UI/start_menu" to="UI/QuestsBox" method="_on_start_menu_show_main_quest"]
 [connection signal="show_secondary_quests" from="UI/start_menu" to="UI/QuestsBox" method="_on_start_menu_show_secondary_quests"]

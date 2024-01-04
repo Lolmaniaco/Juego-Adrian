@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8wo854wb8aty"]
+
+[ext_resource type="Texture2D" uid="uid://lfsu8myhmfpn" path="res://Assets/Sprites/TestFloor/tiles_packed.png" id="1_peu6c"]
+[ext_resource type="Script" path="res://Assets/Scenes/World/watermelon.gd" id="1_xwtup"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fang6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtf3q"]
+atlas = ExtResource("1_peu6c")
+region = Rect2(289, 1, 16, 16)
+
+[sub_resource type="Animation" id="Animation_xj23s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2wt8c"]
+resource_name = "idle_move"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cem2g"]
+_data = {
+"RESET": SubResource("Animation_xj23s"),
+"idle_move": SubResource("Animation_2wt8c")
+}
+
+[node name="Watermelon" type="Area2D"]
+scale = Vector2(2.4942, 2.4942)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_xwtup")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fang6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.0117647, 0.87451, 0, 1)
+texture = SubResource("AtlasTexture_gtf3q")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cem2g")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

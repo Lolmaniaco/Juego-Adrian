@@ -12,7 +12,7 @@ func order_missions():
 func new_main_quest(title, description):
 	var main_quest = quests_bar.find_child("Main_Quest")
 	if main_quest != null: 
-		main_quest.text = name + "\n" + description
+		main_quest.text = title + "\n" + description
 	else:
 		var new_child = mission.instantiate()
 		new_child.text = title + "\n" + description
@@ -21,10 +21,12 @@ func new_main_quest(title, description):
 		new_child.owner = quests_bar
 
 func _ready():
-	var main_quest: Array
-	main_quest = Journal.get_main_quest()
-	new_main_quest(main_quest[0], main_quest[1])
-	order_missions()
+	Journal.update_quests.connect(new_main_quest)
+	
+	#var main_quest: Array
+	#main_quest = Journal.get_main_quest()
+	#new_main_quest(main_quest[0], main_quest[1])
+	#order_missions()
 
 func _on_start_menu_show_main_quest(toggled_on):
 	var main_quest = quests_bar.find_child("Main_Quest")

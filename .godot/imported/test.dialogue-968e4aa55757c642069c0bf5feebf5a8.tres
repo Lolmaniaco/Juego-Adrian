@@ -1,25 +1,101 @@
 [gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_wm5ui"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_ew0sk"]
 
 [resource]
-script = ExtResource("1_wm5ui")
+script = ExtResource("1_ew0sk")
 using_states = PackedStringArray()
 titles = {
-"start": "3",
-"start2": "15"
+"start": "2",
+"start2": "39"
 }
 character_names = PackedStringArray("Guturu", "Nathan")
-first_title = "3"
+first_title = "2"
 lines = {
 "1": {
 "id": "1",
-"next_id": "3",
+"next_id": "2",
 "text": "start",
 "type": "title"
 },
 "10": {
+"character": "Guturu",
+"character_replacements": Array[Dictionary]([]),
 "id": "10",
+"next_id": "11",
+"parent_id": "8",
+"tags": PackedStringArray(),
+"text": "Would you do me the favour?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Would you do me the favour?",
+"type": "dialogue"
+},
+"11": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "11",
+"next_id": "12",
+"next_id_after": "15",
+"parent_id": "8",
+"responses": PackedStringArray("11", "14"),
+"tags": PackedStringArray(),
+"text": "Yes, of course",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Yes, of course",
+"type": "response"
+},
+"12": {
+"id": "12",
+"mutation": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "mission_0"
+}, {
+"type": "assignment",
+"value": "="
+}, {
+"type": "variable",
+"value": "true"
+}])
+},
+"next_id": "13",
+"parent_id": "11",
+"type": "mutation"
+},
+"13": {
+"id": "13",
+"mutation": {
+"expression": Array[Dictionary]([{
+"function": "emit",
+"type": "function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "start_main_quest"
+}]), Array[Dictionary]([{
+"type": "number",
+"value": 0
+}])])
+}])
+},
+"next_id": "15",
+"parent_id": "11",
+"type": "mutation"
+},
+"14": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "14",
+"next_id": "15",
+"next_id_after": "15",
+"parent_id": "8",
+"tags": PackedStringArray(),
+"text": "Na, passing",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Na, passing",
+"type": "response"
+},
+"15": {
+"id": "15",
 "mutation": {
 "expression": Array[Dictionary]([{
 "function": "emit",
@@ -33,184 +109,298 @@ lines = {
 }])])
 }])
 },
-"next_id": "11",
+"next_id": "16",
+"parent_id": "8",
 "type": "mutation"
 },
-"11": {
-"id": "11",
+"16": {
+"id": "16",
 "is_snippet": false,
-"next_id": "end!",
+"next_id": "end",
+"parent_id": "8",
 "type": "goto"
 },
-"13": {
-"id": "13",
-"next_id": "15",
-"text": "start2",
-"type": "title"
-},
-"15": {
-"character": "Nathan",
-"character_replacements": Array[Dictionary]([]),
-"id": "15",
-"next_id": "16",
-"tags": PackedStringArray(),
-"text": "[[Hi|Hello|Howdy]], this is some dialogue.",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "[[Hi|Hello|Howdy]], this is some dialogue.",
-"type": "dialogue"
-},
-"16": {
-"character": "Nathan",
-"character_replacements": Array[Dictionary]([]),
-"id": "16",
-"next_id": "17",
-"tags": PackedStringArray(),
-"text": "Here are some choices.",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "Here are some choices.",
-"type": "dialogue"
-},
 "17": {
-"character": "",
+"character": "Guturu",
 "character_replacements": Array[Dictionary]([]),
 "id": "17",
 "next_id": "18",
-"next_id_after": "23",
-"responses": PackedStringArray("17", "19", "21", "22"),
+"parent_id": "2",
 "tags": PackedStringArray(),
-"text": "First one",
+"text": "Now, if you let me be... I'll be selling some melones, bye.",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "First one",
-"type": "response"
+"translation_key": "Now, if you let me be... I'll be selling some melones, bye.",
+"type": "dialogue"
 },
 "18": {
-"character": "Nathan",
-"character_replacements": Array[Dictionary]([]),
 "id": "18",
-"next_id": "23",
-"parent_id": "17",
-"tags": PackedStringArray(),
-"text": "You picked the first one.",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "You picked the first one.",
-"type": "dialogue"
+"mutation": {
+"expression": Array[Dictionary]([{
+"function": "emit",
+"type": "function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "dialogue_ended"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Guturu"
+}])])
+}])
+},
+"next_id": "19",
+"parent_id": "2",
+"type": "mutation"
 },
 "19": {
-"character": "",
-"character_replacements": Array[Dictionary]([]),
 "id": "19",
-"next_id": "20",
-"next_id_after": "23",
-"tags": PackedStringArray(),
-"text": "Second one",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "Second one",
-"type": "response"
+"is_snippet": false,
+"next_id": "end",
+"parent_id": "2",
+"type": "goto"
+},
+"2": {
+"condition": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "mission_0"
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "variable",
+"value": "false"
+}, {
+"type": "colon"
+}])
+},
+"id": "2",
+"next_conditional_id": "20",
+"next_id": "3",
+"next_id_after": "39",
+"type": "condition"
 },
 "20": {
-"character": "Nathan",
-"character_replacements": Array[Dictionary]([]),
 "id": "20",
-"next_id": "23",
-"parent_id": "19",
-"tags": PackedStringArray(),
-"text": "You picked the second one.",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "You picked the second one.",
-"type": "dialogue"
-},
-"21": {
-"character": "",
-"character_replacements": Array[Dictionary]([]),
-"id": "21",
-"next_id": "3",
-"next_id_after": "23",
-"tags": PackedStringArray(),
-"text": "Start again",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "Start again",
-"type": "response"
+"next_conditional_id": "39",
+"next_id": "22",
+"next_id_after": "39",
+"type": "condition"
 },
 "22": {
-"character": "",
+"character": "Guturu",
 "character_replacements": Array[Dictionary]([]),
 "id": "22",
 "next_id": "23",
-"next_id_after": "23",
+"parent_id": "20",
 "tags": PackedStringArray(),
-"text": "End the conversation",
+"text": "Hi, friend. Have you gathered my melones?",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "End the conversation",
-"type": "response"
+"translation_key": "Hi, friend. Have you gathered my melones?",
+"type": "dialogue"
 },
 "23": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
 "id": "23",
-"mutation": {
-"expression": Array[Dictionary]([{
-"function": "emit",
-"type": "function",
-"value": Array[Array]([Array[Dictionary]([{
-"type": "string",
-"value": "test_signal"
-}]), Array[Dictionary]([{
-"type": "string",
-"value": "signal emitted"
-}])])
-}])
-},
 "next_id": "24",
-"type": "mutation"
+"next_id_after": "39",
+"parent_id": "20",
+"responses": PackedStringArray("23", "32"),
+"tags": PackedStringArray(),
+"text": "Yes, here you have.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Yes, here you have.",
+"type": "response"
 },
 "24": {
+"condition": {
+"expression": Array[Dictionary]([{
+"type": "variable",
+"value": "watermelon"
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "number",
+"value": 2
+}, {
+"type": "colon"
+}])
+},
 "id": "24",
-"is_snippet": false,
-"next_id": "end",
-"type": "goto"
+"next_conditional_id": "28",
+"next_id": "25",
+"next_id_after": "30",
+"parent_id": "23",
+"type": "condition"
 },
 "25": {
-"character": "Nathan",
+"character": "Guturu",
 "character_replacements": Array[Dictionary]([]),
 "id": "25",
 "next_id": "26",
+"parent_id": "24",
 "tags": PackedStringArray(),
-"text": "For more information see the online documentation.",
+"text": "Thank you, my friend! Now I will be melon-rich or something. I've never played Dofus",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "For more information see the online documentation.",
+"translation_key": "Thank you, my friend! Now I will be melon-rich or something. I've never played Dofus",
 "type": "dialogue"
 },
 "26": {
+"character": "Guturu",
+"character_replacements": Array[Dictionary]([]),
 "id": "26",
+"next_id": "27",
+"parent_id": "24",
+"tags": PackedStringArray(),
+"text": "Here you have another mission.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Here you have another mission.",
+"type": "dialogue"
+},
+"27": {
+"id": "27",
 "mutation": {
 "expression": Array[Dictionary]([{
 "function": "emit",
 "type": "function",
 "value": Array[Array]([Array[Dictionary]([{
 "type": "string",
-"value": "test_signal"
+"value": "start_main_quest"
 }]), Array[Dictionary]([{
-"type": "string",
-"value": "signal emitted"
+"type": "number",
+"value": 1
 }])])
 }])
 },
-"next_id": "27",
+"next_id": "30",
+"parent_id": "24",
 "type": "mutation"
 },
-"27": {
-"id": "27",
-"is_snippet": false,
-"next_id": "end",
-"type": "goto"
+"28": {
+"id": "28",
+"next_conditional_id": "30",
+"next_id": "29",
+"next_id_after": "30",
+"parent_id": "23",
+"type": "condition"
+},
+"29": {
+"character": "Guturu",
+"character_replacements": Array[Dictionary]([]),
+"id": "29",
+"next_id": "30",
+"parent_id": "28",
+"tags": PackedStringArray(),
+"text": "What the hell are you talking about, pendejo. Don't fuck around with me!",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "What the hell are you talking about, pendejo. Don't fuck around with me!",
+"type": "dialogue"
 },
 "3": {
 "character": "Guturu",
 "character_replacements": Array[Dictionary]([]),
 "id": "3",
 "next_id": "4",
+"parent_id": "2",
 "tags": PackedStringArray(),
 "text": "Oh, I used to be an adventurer like you until an arrow hit me in the knee.",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "Oh, I used to be an adventurer like you until an arrow hit me in the knee.",
+"type": "dialogue"
+},
+"30": {
+"id": "30",
+"mutation": {
+"expression": Array[Dictionary]([{
+"function": "emit",
+"type": "function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "dialogue_ended"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Guturu"
+}])])
+}])
+},
+"next_id": "31",
+"parent_id": "23",
+"type": "mutation"
+},
+"31": {
+"id": "31",
+"is_snippet": false,
+"next_id": "end",
+"parent_id": "23",
+"type": "goto"
+},
+"32": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "32",
+"next_id": "33",
+"next_id_after": "34",
+"parent_id": "20",
+"tags": PackedStringArray(),
+"text": "No, I haven't been able to",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "No, I haven't been able to",
+"type": "response"
+},
+"33": {
+"character": "Guturu",
+"character_replacements": Array[Dictionary]([]),
+"id": "33",
+"next_id": "34",
+"parent_id": "32",
+"tags": PackedStringArray(),
+"text": "Okay, no problem. There is no prisa.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Okay, no problem. There is no prisa.",
+"type": "dialogue"
+},
+"34": {
+"id": "34",
+"mutation": {
+"expression": Array[Dictionary]([{
+"function": "emit",
+"type": "function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "dialogue_ended"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "Guturu"
+}])])
+}])
+},
+"next_id": "35",
+"parent_id": "20",
+"type": "mutation"
+},
+"35": {
+"id": "35",
+"is_snippet": false,
+"next_id": "end",
+"parent_id": "20",
+"type": "goto"
+},
+"37": {
+"id": "37",
+"next_id": "39",
+"text": "start2",
+"type": "title"
+},
+"39": {
+"character": "Nathan",
+"character_replacements": Array[Dictionary]([]),
+"id": "39",
+"next_id": "40",
+"tags": PackedStringArray(),
+"text": "[[Hi|Hello|Howdy]], this is some dialogue.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "[[Hi|Hello|Howdy]], this is some dialogue.",
 "type": "dialogue"
 },
 "4": {
@@ -218,7 +408,8 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "4",
 "next_id": "5",
-"next_id_after": "9",
+"next_id_after": "17",
+"parent_id": "2",
 "responses": PackedStringArray("4", "6", "8"),
 "tags": PackedStringArray(),
 "text": "Por qué estás hablando en inglés, Guturu?",
@@ -226,11 +417,130 @@ lines = {
 "translation_key": "Por qué estás hablando en inglés, Guturu?",
 "type": "response"
 },
+"40": {
+"character": "Nathan",
+"character_replacements": Array[Dictionary]([]),
+"id": "40",
+"next_id": "41",
+"tags": PackedStringArray(),
+"text": "Here are some choices.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Here are some choices.",
+"type": "dialogue"
+},
+"41": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "41",
+"next_id": "42",
+"next_id_after": "47",
+"responses": PackedStringArray("41", "43", "45", "46"),
+"tags": PackedStringArray(),
+"text": "First one",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "First one",
+"type": "response"
+},
+"42": {
+"character": "Nathan",
+"character_replacements": Array[Dictionary]([]),
+"id": "42",
+"next_id": "47",
+"parent_id": "41",
+"tags": PackedStringArray(),
+"text": "You picked the first one.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You picked the first one.",
+"type": "dialogue"
+},
+"43": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "43",
+"next_id": "44",
+"next_id_after": "47",
+"tags": PackedStringArray(),
+"text": "Second one",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Second one",
+"type": "response"
+},
+"44": {
+"character": "Nathan",
+"character_replacements": Array[Dictionary]([]),
+"id": "44",
+"next_id": "47",
+"parent_id": "43",
+"tags": PackedStringArray(),
+"text": "You picked the second one.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You picked the second one.",
+"type": "dialogue"
+},
+"45": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "45",
+"next_id": "2",
+"next_id_after": "47",
+"tags": PackedStringArray(),
+"text": "Start again",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Start again",
+"type": "response"
+},
+"46": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "46",
+"next_id": "47",
+"next_id_after": "47",
+"tags": PackedStringArray(),
+"text": "End the conversation",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "End the conversation",
+"type": "response"
+},
+"47": {
+"id": "47",
+"mutation": {
+"expression": Array[Dictionary]([{
+"function": "emit",
+"type": "function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "test_signal"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "signal emitted"
+}])])
+}])
+},
+"next_id": "48",
+"type": "mutation"
+},
+"48": {
+"id": "48",
+"is_snippet": false,
+"next_id": "end",
+"type": "goto"
+},
+"49": {
+"character": "Nathan",
+"character_replacements": Array[Dictionary]([]),
+"id": "49",
+"next_id": "50",
+"tags": PackedStringArray(),
+"text": "For more information see the online documentation.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "For more information see the online documentation.",
+"type": "dialogue"
+},
 "5": {
 "character": "Guturu",
 "character_replacements": Array[Dictionary]([]),
 "id": "5",
-"next_id": "9",
+"next_id": "17",
 "parent_id": "4",
 "tags": PackedStringArray(),
 "text": "I can't understand what you say, my friend.",
@@ -238,12 +548,37 @@ lines = {
 "translation_key": "I can't understand what you say, my friend.",
 "type": "dialogue"
 },
+"50": {
+"id": "50",
+"mutation": {
+"expression": Array[Dictionary]([{
+"function": "emit",
+"type": "function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "test_signal"
+}]), Array[Dictionary]([{
+"type": "string",
+"value": "signal emitted"
+}])])
+}])
+},
+"next_id": "51",
+"type": "mutation"
+},
+"51": {
+"id": "51",
+"is_snippet": false,
+"next_id": "end",
+"type": "goto"
+},
 "6": {
 "character": "",
 "character_replacements": Array[Dictionary]([]),
 "id": "6",
 "next_id": "7",
-"next_id_after": "9",
+"next_id_after": "17",
+"parent_id": "2",
 "tags": PackedStringArray(),
 "text": "Es eso una referencia a Dofus?",
 "text_replacements": Array[Dictionary]([]),
@@ -254,7 +589,7 @@ lines = {
 "character": "Guturu",
 "character_replacements": Array[Dictionary]([]),
 "id": "7",
-"next_id": "9",
+"next_id": "17",
 "parent_id": "6",
 "tags": PackedStringArray(),
 "text": "Oh, yeah, I like Dofus a lot!",
@@ -267,11 +602,12 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "8",
 "next_id": "9",
-"next_id_after": "9",
+"next_id_after": "17",
+"parent_id": "2",
 "tags": PackedStringArray(),
-"text": "...",
+"text": "Hey, do you need anything, my amigo?",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "...",
+"translation_key": "Hey, do you need anything, my amigo?",
 "type": "response"
 },
 "9": {
@@ -279,10 +615,11 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "9",
 "next_id": "10",
+"parent_id": "8",
 "tags": PackedStringArray(),
-"text": "Now, if you let me be... I'll be selling some melones, bye.",
+"text": "Now that you say that... I'd be good if you can help me sell some melones...",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "Now, if you let me be... I'll be selling some melones, bye.",
+"translation_key": "Now that you say that... I'd be good if you can help me sell some melones...",
 "type": "dialogue"
 }
 }

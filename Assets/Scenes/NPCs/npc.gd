@@ -3,41 +3,21 @@ class_name NPC
 
 signal speaking_with_player
 
-@export var dialogue_resource: DialogueResource
-@export var dialogue_line: String = "start"
-@export var NPC_name: String = ""
-
-@onready var animation_player = $AnimationPlayer
-@onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var hysteresis = $Hysteresis
-
-enum {IDLE, SPEAKING, EXPLAINING, SIDE}
-var state = IDLE
+@onready var FSM = $FiniteStateMachine as FiniteStateMachine
+@onready var npc_idle_state = $FiniteStateMachine/NPCIdleState as NPCIdleState
+@onready var npc_speaking_state = $FiniteStateMachine/NPCSpeakingState as NPCSpeakingState
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var speaking: bool = false
 
 func _ready() -> void:
-	Events.dialogue_ended.connect(_on_dialogue_ended)
-
-func _on_dialogue_ended(_var: String) -> void:
-	state = SIDE
-	speaking = false
+	npc_idle_state.NPC_started_speaking.connect(FSM.change_state.bind(npc_speaking_state))
+	
+	npc_speaking_state.NPC_finished_speaking.connect(FSM.change_state.bind(npc_idle_state))
 
 func _process(delta) -> void:
 	apply_gravity(delta)
 	move_and_slide()
 
-	match state:
-		SPEAKING: speaking_state()
-
 func apply_gravity(delta) -> void:
 	velocity.y += gravity * delta
-
-func speaking_state() -> void:
-	if not speaking:
-		DialogueManager.show_dialogue_balloon(dialogue_resource)
-		speaking = true
-
-func _on_hysteresis_timeout() -> void:
-	state = IDLE

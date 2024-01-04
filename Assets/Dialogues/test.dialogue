@@ -1,14 +1,38 @@
 ~ start
+if mission_0 == false:
+	Guturu: Oh, I used to be an adventurer like you until an arrow hit me in the knee.
+	- Por qué estás hablando en inglés, Guturu?
+		Guturu: I can't understand what you say, my friend.
+	- Es eso una referencia a Dofus?
+		Guturu: Oh, yeah, I like Dofus a lot!
+	- Hey, do you need anything, my amigo?
+		Guturu: Now that you say that... I'd be good if you can help me sell some melones...
+		Guturu: Would you do me the favour?
+		- Yes, of course
+			set mission_0 = true
+			do emit("start_main_quest", 0)
+		- Na, passing
+		do emit("dialogue_ended", "Guturu")
+		=> END
+	Guturu: Now, if you let me be... I'll be selling some melones, bye.
+	do emit("dialogue_ended", "Guturu")
+	=> END
+else:
 
-Guturu: Oh, I used to be an adventurer like you until an arrow hit me in the knee.
-- Por qué estás hablando en inglés, Guturu?
-	Guturu: I can't understand what you say, my friend.
-- Es eso una referencia a Dofus?
-	Guturu: Oh, yeah, I like Dofus a lot!
-- ...
-Guturu: Now, if you let me be... I'll be selling some melones, bye.
-do emit("dialogue_ended", "Guturu")
-=> END!
+	Guturu: Hi, friend. Have you gathered my melones?
+	- Yes, here you have.
+		if watermelon == 2:
+			Guturu: Thank you, my friend! Now I will be melon-rich or something. I've never played Dofus
+			Guturu: Here you have another mission.
+			do emit("start_main_quest", 1)
+		else:
+			Guturu: What the hell are you talking about, pendejo. Don't fuck around with me!
+		do emit("dialogue_ended", "Guturu")
+		=> END
+	- No, I haven't been able to
+		Guturu: Okay, no problem. There is no prisa.
+	do emit("dialogue_ended", "Guturu")
+	=> END
 
 ~ start2
 

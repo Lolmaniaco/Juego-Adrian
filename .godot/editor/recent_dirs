@@ -1,10 +1,11 @@
-res://Assets/Scenes/Enemies
+res://Assets/Scenes/World
 res://Assets/Sprites/TestFloor
+res://Assets/themes
+res://Assets/Sprites
+res://Assets/Scenes/Enemies
 res://Assets/Dialogues
 res://Assets/Scripts
 res://Assets
-res://Assets/themes
-res://Assets/Sprites
 res://Assets/Scenes/UI
 res://Assets/Scenes
 res://Assets/Sprites/Elevator
