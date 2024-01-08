@@ -52,7 +52,6 @@ func _on_detector_area_entered(area):
 	
 	if area.get_collision_layer() == 4:
 		Events.player_dead.emit(area.name)
-		print(area.name)
 		character.queue_free()
 
 func _on_detector_area_exited(area):

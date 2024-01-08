@@ -1,7 +1,8 @@
 extends Node2D
 
-@onready var player = $World/Player
-@onready var main_camera = $World/Camera2D
+@onready var player = $Player
+@onready var main_camera = $Camera2D
+
 @onready var start_menu = $UI/start_menu
 @onready var death_report = $UI/DeathReport
 @onready var quests_box = $UI/QuestsBox
@@ -49,6 +50,8 @@ func _on_player_dead(death_cause:String):
 	match death_cause:
 		"SPIKES": description = "The victim steped into poisoned spikes. Slight cuts injected venom through the blood vessels reaching in a couple of second to the brain, causing instant paralysis and death"
 		"FLAMES": description = "Chemical fire caused an instant shock of pain into the body. The victim fell unconscious dying moments later due to repetitive burns."
+		"FISSURE": description = "After revising the station's black box, we found out that the victim was sucked into outer space. The oxygen tank lasted for about 8 hours, but the slow and peaceful death was known from the beginning."
+		"VOIDLING": description = "Several bodies were found merged inside the aggresive ameba. Muscles, tenders and bones were deformed to be the vessel of a horrific brand new being."
 		_: description = "Fatal Error. Player killed by unknown danger."
 
 	death_report.set_death_report_data(player_name, Time.get_date_dict_from_system(), memories, description)

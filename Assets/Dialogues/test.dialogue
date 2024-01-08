@@ -18,13 +18,11 @@ if mission_0 == false:
 	do emit("dialogue_ended", "Guturu")
 	=> END
 else:
-
 	Guturu: Hi, friend. Have you gathered my melones?
 	- Yes, here you have.
 		if watermelon == 2:
 			Guturu: Thank you, my friend! Now I will be melon-rich or something. I've never played Dofus
-			Guturu: Here you have another mission.
-			do emit("start_main_quest", 1)
+			do emit("end_main_quest")
 		else:
 			Guturu: What the hell are you talking about, pendejo. Don't fuck around with me!
 		do emit("dialogue_ended", "Guturu")

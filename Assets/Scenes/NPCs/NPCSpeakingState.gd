@@ -19,7 +19,6 @@ func _enter_state() -> void:
 
 func _exit_state() -> void:
 	set_physics_process(false)
-	#animator.stop()
 
 func _physics_process(_delta):
 	if not speaking:
@@ -27,6 +26,5 @@ func _physics_process(_delta):
 		speaking = true
 
 func _on_dialogue_ended(_name:String) -> void:
-	#state = SIDE
 	speaking = false
 	NPC_finished_speaking.emit()

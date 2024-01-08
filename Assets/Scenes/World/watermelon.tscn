@@ -11,6 +11,7 @@ region = Rect2(289, 1, 16, 16)
 
 [sub_resource type="Animation" id="Animation_xj23s"]
 length = 0.001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -39,7 +40,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_2wt8c"]
 resource_name = "idle_move"
 length = 2.0
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

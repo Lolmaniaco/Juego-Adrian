@@ -21,14 +21,11 @@ func _enter_state() -> void:
 func _exit_state() -> void:
 	set_physics_process(false)
 
-func _physics_process(_delta) -> void:
-	pass
-
 func handle_player_crouching(ut:bool = false):
-	if Input.is_action_just_pressed("KeyDown"):
+	if Input.is_action_just_pressed("Crouch"):
 		animator.play("duck_down")
 		Events.crouched = true
-	if Input.is_action_just_released("KeyDown"):
+	if Input.is_action_just_released("Crouch"):
 		Events.stand_up_when_ready = true
 	
 	if Events.stand_up_when_ready and not ut:

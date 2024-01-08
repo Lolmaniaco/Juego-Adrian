@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdnmg2t232fjj"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/Enemies/voidling.gd" id="1_f66mi"]
+[ext_resource type="Texture2D" uid="uid://drl8wlvngonvw" path="res://Assets/Sprites/Danger/Void Enemy.png" id="1_o4hmf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3fdu8"]
+radius = 25.9995
+height = 114.002
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxel4"]
+radius = 25.9995
+height = 114.002
+
+[node name="Voidling" type="CharacterBody2D"]
+collision_layer = 0
+script = ExtResource("1_f66mi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o4hmf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+rotation = 1.57133
+shape = SubResource("CapsuleShape2D_3fdu8")
+
+[node name="Voidling" type="Area2D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Voidling"]
+position = Vector2(0, 5)
+rotation = 1.57133
+shape = SubResource("CapsuleShape2D_cxel4")

@@ -15,6 +15,6 @@ func _on_body_entered(body):
 	
 	var watermelon_text = fading_text.instantiate()
 	get_parent().add_child(watermelon_text)
-	watermelon_text.change_name("[center]Watermelon")
+	watermelon_text.change_name("Watermelon")
 	watermelon_text.position = global_position
 	queue_free()
