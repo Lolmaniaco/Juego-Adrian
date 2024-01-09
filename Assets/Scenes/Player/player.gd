@@ -9,6 +9,7 @@ class_name Player
 @onready var player_moving_state = $FiniteStateMachine/PlayerMovingState as PlayerMovingState
 @onready var player_gravity_state = $FiniteStateMachine/PlayerGravityState as PlayerGravityState
 @onready var player_speaking_state = $FiniteStateMachine/PlayerSpeakingState as PlayerSpeakingState
+@onready var player_hiding_state = $FiniteStateMachine/PlayerHidingState as PlayerHidingState
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -16,10 +17,14 @@ func _ready() -> void:
 	player_idle_state.player_moving.connect(FSM.change_state.bind(player_moving_state))
 	player_idle_state.change_gravity.connect(FSM.change_state.bind(player_gravity_state))
 	player_idle_state.player_speaking.connect(FSM.change_state.bind(player_speaking_state))
+	player_idle_state.player_hiding.connect(FSM.change_state.bind(player_hiding_state))
 	
 	player_moving_state.change_gravity.connect(FSM.change_state.bind(player_gravity_state))
 	player_moving_state.player_stopped.connect(FSM.change_state.bind(player_idle_state))
 	player_moving_state.player_speaking.connect(FSM.change_state.bind(player_speaking_state))
+	player_moving_state.player_hiding.connect(FSM.change_state.bind(player_hiding_state))
+	
+	player_hiding_state.player_moving.connect(FSM.change_state.bind(player_moving_state))
 	
 	player_gravity_state.gravity_changed.connect(FSM.change_state.bind(player_idle_state))
 	

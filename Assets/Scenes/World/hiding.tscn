@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxbseid64s8u0"]
+
+[ext_resource type="Script" path="res://Assets/Scenes/World/hiding.gd" id="1_nb4be"]
+
+[node name="Hiding" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_nb4be")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_left = -19.0
+offset_top = -32.0
+offset_right = 19.0
+pivot_offset = Vector2(9, 7.5)
+color = Color(0.156863, 0.156863, 0.156863, 0.529412)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.223529, 0.223529, 0.223529, 0.811765)
+polygon = PackedVector2Array(-3, -38, 13, -28, 22, -30, 22, 0, 21, 0, -19, 0, -19, -32)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

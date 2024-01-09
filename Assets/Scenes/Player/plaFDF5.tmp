@@ -457,8 +457,8 @@ height = 56.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_8wddf"]
 radius = 13.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n32xo"]
-height = 53.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wm3ne"]
+size = Vector2(22, 51)
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 2
@@ -494,7 +494,7 @@ collision_mask = 7
 
 [node name="DetectorCS" type="CollisionShape2D" parent="Detector"]
 position = Vector2(0, 0.5)
-shape = SubResource("CapsuleShape2D_n32xo")
+shape = SubResource("RectangleShape2D_wm3ne")
 
 [node name="ChangeGravityTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -532,6 +532,7 @@ detector = NodePath("../../Detector")
 
 [node name="PlayerHidingState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("character", "animator", "detector")]
 script = ExtResource("25_iqoik")
+SPEED = null
 character = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 detector = NodePath("../../Detector")

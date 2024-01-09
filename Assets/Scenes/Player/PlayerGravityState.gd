@@ -16,8 +16,10 @@ func _enter_state() -> void:
 	else:
 		animator.play("change_gravity_down")
 	await animator.animation_finished
-	remoteTransform.rotate(PI)
+	#remoteTransform.rotate(PI)
 	character.gravity *= -1
+	
+	#await get_tree().create_timer(0.5).timeout
 	gravity_changed.emit()
 
 func _exit_state():

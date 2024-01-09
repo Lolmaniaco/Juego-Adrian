@@ -1,0 +1,104 @@
+[gd_scene load_steps=17 format=3 uid="uid://dlhxcaws03v8t"]
+
+[ext_resource type="PackedScene" uid="uid://c7ag0l81mt8yv" path="res://Assets/Scenes/Test/brick.tscn" id="1_74mx8"]
+[ext_resource type="PackedScene" uid="uid://c2qr0iihsuptd" path="res://Assets/Scenes/World/door.tscn" id="2_2hrbh"]
+[ext_resource type="TileSet" uid="uid://dm00npul4akml" path="res://Assets/Scenes/World/main.tres" id="3_h02aw"]
+[ext_resource type="PackedScene" uid="uid://dyvoekdl5sppi" path="res://Assets/Scenes/NPCs/npc.tscn" id="4_ucnr6"]
+[ext_resource type="PackedScene" uid="uid://brfwokkxbqdni" path="res://Assets/Scenes/World/elevator.tscn" id="5_4vo6u"]
+[ext_resource type="PackedScene" uid="uid://p6a4vise2vjr" path="res://Assets/Scenes/Enemies/spikes.tscn" id="6_nb1ls"]
+[ext_resource type="PackedScene" uid="uid://dovy5ani47gw1" path="res://Assets/Scenes/Enemies/flamethrower.tscn" id="7_l438f"]
+[ext_resource type="PackedScene" uid="uid://c8wo854wb8aty" path="res://Assets/Scenes/World/watermelon.tscn" id="8_ksyj7"]
+[ext_resource type="PackedScene" uid="uid://cdnmg2t232fjj" path="res://Assets/Scenes/Enemies/voidling.tscn" id="9_15xlm"]
+[ext_resource type="PackedScene" uid="uid://flbmvlv3xnp6" path="res://Assets/Scenes/Enemies/fissure.tscn" id="10_0iidw"]
+[ext_resource type="PackedScene" uid="uid://cxbseid64s8u0" path="res://Assets/Scenes/World/hiding.tscn" id="11_d0plf"]
+[ext_resource type="Texture2D" uid="uid://lfsu8myhmfpn" path="res://Assets/Sprites/TestFloor/tiles_packed.png" id="12_u6foc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_obo5m"]
+size = Vector2(1468, 132)
+
+[sub_resource type="Curve2D" id="Curve2D_i1vcu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 124, 85, 0, 0, 0, 0, 117, -79, 0, 0, 0, 0, 111, -311)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2vfj"]
+size = Vector2(12, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x25m8"]
+atlas = ExtResource("12_u6foc")
+region = Rect2(334, 108, 16, 19)
+
+[node name="TestWorld" type="Node2D"]
+
+[node name="TPs" type="Node2D" parent="."]
+
+[node name="TPsEmergencia" type="Area2D" parent="TPs"]
+position = Vector2(504, 679)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TPs/TPsEmergencia"]
+position = Vector2(9, 40)
+shape = SubResource("RectangleShape2D_obo5m")
+
+[node name="Brick2" parent="." instance=ExtResource("1_74mx8")]
+position = Vector2(1075, 429)
+rotation = 1.0472
+
+[node name="Brick" parent="." instance=ExtResource("1_74mx8")]
+position = Vector2(1006, 468)
+rotation = 1.0472
+
+[node name="Door" parent="." instance=ExtResource("2_2hrbh")]
+position = Vector2(178, 519)
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-5, -1)
+tile_set = ExtResource("3_h02aw")
+format = 2
+layer_0/name = "Terrain"
+layer_0/tile_data = PackedInt32Array(2359318, 0, 0, 2359326, 0, 0, 2359334, 0, 0, 2097198, 0, 0, 589845, 0, 0, 589853, 0, 0, 589861, 0, 0, 589869, 0, 0, 2359310, 0, 0, 2359302, 0, 0, 2424830, 0, 0, 589837, 0, 0, 589829, 0, 0, 1114123, 0, 0, 1572875, 0, 0, 1703939, 0, 0, 65541, 0, 0, 65581, 0, 0)
+layer_1/tile_data = PackedInt32Array()
+
+[node name="NPC" parent="." instance=ExtResource("4_ucnr6")]
+position = Vector2(382, 406)
+
+[node name="Elevator" parent="." instance=ExtResource("5_4vo6u")]
+position = Vector2(752, 406)
+curve = SubResource("Curve2D_i1vcu")
+ANIM_SPEED = 0.5
+
+[node name="Spikes" parent="." instance=ExtResource("6_nb1ls")]
+position = Vector2(1302, 408)
+
+[node name="Flamethrower" parent="." instance=ExtResource("7_l438f")]
+position = Vector2(234, 491)
+
+[node name="Watermelon" parent="." instance=ExtResource("8_ksyj7")]
+position = Vector2(609, 482)
+
+[node name="Watermelon2" parent="." instance=ExtResource("8_ksyj7")]
+position = Vector2(-50, 490)
+
+[node name="Voidling" parent="." instance=ExtResource("9_15xlm")]
+z_index = 20
+position = Vector2(220, 55)
+
+[node name="Fissure" parent="." instance=ExtResource("10_0iidw")]
+position = Vector2(655, 486)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Fissure"]
+shape = SubResource("RectangleShape2D_d2vfj")
+
+[node name="Hiding" parent="." instance=ExtResource("11_d0plf")]
+z_index = 10
+position = Vector2(195, 87)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hiding"]
+polygon = PackedVector2Array(-1, -38, 9, -32, 19, -31, 22, -34, 22, 0, -21, 0, -21, -32, -12, -39, -5, -41)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Hiding"]
+position = Vector2(-4, -29)
+scale = Vector2(3.44097, 3.35051)
+texture = SubResource("AtlasTexture_x25m8")

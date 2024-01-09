@@ -3,6 +3,9 @@ extends StaticBody2D
 enum behaviour {AUTOMATIC, MANUAL}
 @export var DOOR_BEHAVIOUR = behaviour.AUTOMATIC
 
+enum side {left, right, both}
+@export var DOOR_SIDE_OPENS = side.left
+
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var opened_door_sprite_left = $OpenedDoorSpriteLeft
 @onready var opened_door_sprite_right = $OpenedDoorSpriteRight
@@ -22,16 +25,20 @@ func _process(_delta):
 			open_door()
 
 func open_door():
-	door_opened = true
-	closed_door_sprite.visible = false
-	if temp_player.position.x > position.x:
-		opened_door_sprite_left.visible = true
+	if temp_player.global_position.x > global_position.x:
+		if DOOR_SIDE_OPENS == side.right or DOOR_SIDE_OPENS == side.both or door_opened:
+			closed_door_sprite.visible = false
+			opened_door_sprite_left.visible = true
+			door_opened = true
+			collision_shape_2d.set_deferred("disabled", true)
 	else:
-		opened_door_sprite_right.visible = true
-	collision_shape_2d.set_deferred("disabled", true)
+		if DOOR_SIDE_OPENS == side.left or DOOR_SIDE_OPENS == side.both or door_opened:
+			closed_door_sprite.visible = false
+			opened_door_sprite_right.visible = true
+			door_opened = true
+			collision_shape_2d.set_deferred("disabled", true)
 
 func close_door():
-	door_opened = false
 	closed_door_sprite.visible = true
 	opened_door_sprite_left.visible = false
 	opened_door_sprite_right.visible = false
@@ -42,8 +49,7 @@ func _on_area_2d_body_entered(body):
 	temp_player = body
 	if DOOR_BEHAVIOUR == behaviour.AUTOMATIC:
 		hysteresis.stop()
-		if door_opened == false:
-			open_door()
+		open_door()
 	else:
 		player_near = true
 
