@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://r2b3iog3a2e0"
+path="res://.godot/imported/pilot_level.dialogue-7d2d84384488dc200d9cdbf0e4dc5011.tres"
+
+[deps]
+
+source_file="res://Assets/Dialogues/pilot_level.dialogue"
+dest_files=["res://.godot/imported/pilot_level.dialogue-7d2d84384488dc200d9cdbf0e4dc5011.tres"]
+
+[params]
+
+defaults=true

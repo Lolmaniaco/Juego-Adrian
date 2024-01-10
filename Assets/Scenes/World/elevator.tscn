@@ -168,9 +168,13 @@ scale = Vector2(0.352077, 0.352077)
 texture = ExtResource("1_h46ek")
 
 [node name="Sprite2D" type="Sprite2D" parent="PathFollow2D/StaticBody2D"]
+position = Vector2(0.285078, -18)
+scale = Vector2(0.493507, 0.493506)
 texture = ExtResource("1_uxl6u")
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="PathFollow2D/StaticBody2D"]
+position = Vector2(0.683617, -17.7194)
+scale = Vector2(0.506195, 0.506195)
 polygon = PackedVector2Array(-70.8823, -37.225, 72.117, -36.7715, 71.9806, 6.2283, 50.9807, 6.1617, 28.8793, 38.0918, -25.1204, 37.9205, -47.0156, 4.85093, -71.0155, 4.77482)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow2D/StaticBody2D"]

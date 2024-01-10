@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://d2tnjxn314xsw"]
+[gd_scene load_steps=40 format=3 uid="uid://d2tnjxn314xsw"]
 
 [ext_resource type="Texture2D" uid="uid://bk2r7ks6o3hwo" path="res://Assets/Sprites/Player/character_robot_duck.png" id="1_hjs3f"]
 [ext_resource type="Script" path="res://Assets/Scenes/Player/player.gd" id="1_ty0s1"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://Assets/Scenes/Player/PlayerGravityState.gd" id="23_tveah"]
 [ext_resource type="Script" path="res://Assets/Scenes/Player/PlayerSpeakingState.gd" id="24_udjbm"]
 [ext_resource type="Script" path="res://Assets/Scenes/Player/PlayerHidingState.gd" id="25_iqoik"]
+[ext_resource type="Script" path="res://Assets/Scenes/Player/PlayerWaitingState.gd" id="26_v8b0f"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_18ing"]
 animations = [{
@@ -532,6 +533,12 @@ detector = NodePath("../../Detector")
 
 [node name="PlayerHidingState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("character", "animator", "detector")]
 script = ExtResource("25_iqoik")
+character = NodePath("../..")
+animator = NodePath("../../AnimationPlayer")
+detector = NodePath("../../Detector")
+
+[node name="PlayerWaitingState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("character", "animator", "detector")]
+script = ExtResource("26_v8b0f")
 character = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 detector = NodePath("../../Detector")

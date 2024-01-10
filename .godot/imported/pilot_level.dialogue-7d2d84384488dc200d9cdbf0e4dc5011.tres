@@ -1,0 +1,201 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_qasn1"]
+
+[resource]
+script = ExtResource("1_qasn1")
+using_states = PackedStringArray()
+titles = {
+"traped_investigator_hint": "18",
+"traped_investigator_start": "2",
+"trapped_investigator_solution": "12"
+}
+character_names = PackedStringArray("Investigator")
+first_title = "2"
+lines = {
+"1": {
+"id": "1",
+"next_id": "2",
+"text": "traped_investigator_start",
+"type": "title"
+},
+"11": {
+"id": "11",
+"next_id": "12",
+"text": "trapped_investigator_solution",
+"type": "title"
+},
+"12": {
+"character": "Investigator",
+"character_replacements": Array[Dictionary]([]),
+"id": "12",
+"next_id": "13",
+"tags": PackedStringArray(),
+"text": "The door is sealed.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "The door is sealed.",
+"type": "dialogue"
+},
+"13": {
+"character": "Investigator",
+"character_replacements": Array[Dictionary]([]),
+"id": "13",
+"next_id": "14",
+"tags": PackedStringArray(),
+"text": "You need to reach the control room and open this oven or I'm fried chicken.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You need to reach the control room and open this oven or I'm fried chicken.",
+"type": "dialogue"
+},
+"14": {
+"id": "14",
+"mutation": {
+"expression": Array[Dictionary]([{
+"function": "emit",
+"type": "function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "dialogue_ended"
+}])])
+}])
+},
+"next_id": "15",
+"type": "mutation"
+},
+"15": {
+"id": "15",
+"is_snippet": false,
+"next_id": "end",
+"type": "goto"
+},
+"17": {
+"id": "17",
+"next_id": "18",
+"text": "traped_investigator_hint",
+"type": "title"
+},
+"18": {
+"character": "Investigator",
+"character_replacements": Array[Dictionary]([]),
+"id": "18",
+"next_id": "19",
+"tags": PackedStringArray(),
+"text": "You came from the air ventilation system with your grav boots, right?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You came from the air ventilation system with your grav boots, right?",
+"type": "dialogue"
+},
+"19": {
+"character": "Investigator",
+"character_replacements": Array[Dictionary]([]),
+"id": "19",
+"next_id": "20",
+"tags": PackedStringArray(),
+"text": "You should be able to jump back to the ceiling and cross the rooms. There's a connection to let the particles go into the test computer.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You should be able to jump back to the ceiling and cross the rooms. There's a connection to let the particles go into the test computer.",
+"type": "dialogue"
+},
+"2": {
+"character": "Investigator",
+"character_replacements": Array[Dictionary]([]),
+"id": "2",
+"next_id": "3",
+"tags": PackedStringArray(),
+"text": "Oh my God. Where did you come from?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Oh my God. Where did you come from?",
+"type": "dialogue"
+},
+"20": {
+"id": "20",
+"mutation": {
+"expression": Array[Dictionary]([{
+"function": "emit",
+"type": "function",
+"value": Array[Array]([Array[Dictionary]([{
+"type": "string",
+"value": "dialogue_ended"
+}])])
+}])
+},
+"next_id": "",
+"type": "mutation"
+},
+"3": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "3",
+"next_id": "4",
+"next_id_after": "12",
+"responses": PackedStringArray("3", "7"),
+"tags": PackedStringArray(),
+"text": "Hello, there",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Hello, there",
+"type": "response"
+},
+"4": {
+"character": "Investigator",
+"character_replacements": Array[Dictionary]([]),
+"id": "4",
+"next_id": "5",
+"parent_id": "3",
+"tags": PackedStringArray(),
+"text": "General Kenobi... Fuck, hell. I'm too damn nerdy.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "General Kenobi... Fuck, hell. I'm too damn nerdy.",
+"type": "dialogue"
+},
+"5": {
+"character": "Investigator",
+"character_replacements": Array[Dictionary]([]),
+"id": "5",
+"next_id": "6",
+"parent_id": "3",
+"tags": PackedStringArray(),
+"text": "There's no time to chat. You gotta save me!",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "There's no time to chat. You gotta save me!",
+"type": "dialogue"
+},
+"6": {
+"id": "6",
+"is_snippet": false,
+"next_id": "12",
+"parent_id": "3",
+"type": "goto"
+},
+"7": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "7",
+"next_id": "8",
+"next_id_after": "12",
+"tags": PackedStringArray(),
+"text": "I'm here to save you",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I'm here to save you",
+"type": "response"
+},
+"8": {
+"character": "Investigator",
+"character_replacements": Array[Dictionary]([]),
+"id": "8",
+"next_id": "9",
+"parent_id": "7",
+"tags": PackedStringArray(),
+"text": "Thanks to the heavens.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Thanks to the heavens.",
+"type": "dialogue"
+},
+"9": {
+"id": "9",
+"is_snippet": false,
+"next_id": "12",
+"parent_id": "7",
+"type": "goto"
+}
+}
+metadata/dialogue_manager_version = "2.32.1"

@@ -51,11 +51,11 @@ func _unhandled_input(event) -> void:
 func _physics_process(_delta) -> void:
 	if character.velocity.x != 0:
 		character.velocity.x = move_toward(character.velocity.x, 0, SPEED/float(10))
-
+	
 	if not Events.crouched:
 		if not animator.is_playing(): 
 			animator.play("idle")
-
+	
 	handle_player_crouching(under_terrain)
 
 func handle_player_crouching(ut:bool = false):

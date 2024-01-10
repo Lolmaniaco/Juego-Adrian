@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7gy46qf2kso"]
+[gd_scene load_steps=12 format=3 uid="uid://c7gy46qf2kso"]
 
 [ext_resource type="PackedScene" uid="uid://d2tnjxn314xsw" path="res://Assets/Scenes/Player/player.tscn" id="1_qnto4"]
 [ext_resource type="Script" path="res://Assets/Scenes/main.gd" id="1_vr414"]
@@ -6,6 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://caafac58qglaw" path="res://Assets/Scenes/UI/missions_bar.tscn" id="2_sp27v"]
 [ext_resource type="PackedScene" uid="uid://c4da0xm0dtpli" path="res://Assets/Scenes/UI/start_menu.tscn" id="3_ty156"]
 [ext_resource type="PackedScene" uid="uid://b1yfro7o2476p" path="res://Assets/Scenes/pilot_level.tscn" id="6_cj427"]
+[ext_resource type="Resource" uid="uid://bu1eonqu56l25" path="res://Assets/Dialogues/door_locked.dialogue" id="7_fc8tk"]
+[ext_resource type="PackedScene" uid="uid://cxbseid64s8u0" path="res://Assets/Scenes/World/hiding.tscn" id="8_fe38h"]
+[ext_resource type="Texture2D" uid="uid://lfsu8myhmfpn" path="res://Assets/Sprites/TestFloor/tiles_packed.png" id="9_rwejp"]
+[ext_resource type="PackedScene" uid="uid://cdnmg2t232fjj" path="res://Assets/Scenes/Enemies/voidling.tscn" id="10_8w2yc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5dpv"]
+atlas = ExtResource("9_rwejp")
+region = Rect2(334, 108, 16, 19)
 
 [node name="Main" type="Node2D"]
 process_mode = 3
@@ -26,7 +34,7 @@ visible = false
 
 [node name="Player" parent="." instance=ExtResource("1_qnto4")]
 z_index = 100
-position = Vector2(-241, 780)
+position = Vector2(-585, 781)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
@@ -34,6 +42,39 @@ ignore_rotation = false
 [node name="PilotLevel" parent="." instance=ExtResource("6_cj427")]
 position = Vector2(243, -259)
 script = null
+
+[node name="Door" parent="PilotLevel" index="1"]
+DOOR_BEHAVIOUR = 1
+DOOR_SIDE_OPENS = 0
+
+[node name="Door2" parent="PilotLevel" index="2"]
+dialogue_resource = ExtResource("7_fc8tk")
+
+[node name="Door4" parent="PilotLevel" index="3"]
+position = Vector2(-977, 1065)
+dialogue_resource = ExtResource("7_fc8tk")
+key_needed = "1"
+
+[node name="NPC" parent="PilotLevel" index="4"]
+NPC_Name = "Guturu"
+
+[node name="Hiding" parent="PilotLevel" instance=ExtResource("8_fe38h")]
+z_index = 10
+position = Vector2(-698, 1064)
+rotation = 0.000397004
+scale = Vector2(0.936467, 0.936467)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PilotLevel/Hiding"]
+polygon = PackedVector2Array(-1, -38, 9, -32, 19, -31, 22, -34, 22, 0, -21, 0, -21, -32, -12, -39, -5, -41)
+
+[node name="Sprite2D2" type="Sprite2D" parent="PilotLevel/Hiding"]
+position = Vector2(-4, -29)
+scale = Vector2(3.44097, 3.35051)
+texture = SubResource("AtlasTexture_r5dpv")
+
+[node name="Voidling" parent="PilotLevel/Hiding" instance=ExtResource("10_8w2yc")]
+z_index = 20
+position = Vector2(201.81, -32.1154)
 
 [connection signal="show_main_quest" from="UI/start_menu" to="UI/QuestsBox" method="_on_start_menu_show_main_quest"]
 [connection signal="show_secondary_quests" from="UI/start_menu" to="UI/QuestsBox" method="_on_start_menu_show_secondary_quests"]

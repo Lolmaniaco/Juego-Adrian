@@ -1,0 +1,16 @@
+~ start
+Testing text
+=> END
+
+~ experiment_lab
+The lab is currently running an experiment. Safe lock activated.
+The door can either be opened from the inside or from the adminstrator console
+=> END
+
+~ have_key
+Correct security level card. Opening door.
+=> END
+
+~ havent_key
+You don't have the security level to open this door.
+=> END

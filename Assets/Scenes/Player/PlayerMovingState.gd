@@ -85,12 +85,12 @@ func _on_detector_area_entered(area):
 	if area.name == "NPCDetector":
 		Events.can_talk = true
 	
+	if area.name == "Hiding":
+		Events.can_hide = true
+	
 	if area.get_collision_layer() == 4:
 		Events.player_dead.emit(area.name)
 		character.queue_free()
-	
-	if area.name == "Hiding":
-		Events.can_hide = true
 
 func _on_detector_area_exited(area):
 	if area.name == "NPCDetector":

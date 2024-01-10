@@ -10,6 +10,7 @@ class_name Player
 @onready var player_gravity_state = $FiniteStateMachine/PlayerGravityState as PlayerGravityState
 @onready var player_speaking_state = $FiniteStateMachine/PlayerSpeakingState as PlayerSpeakingState
 @onready var player_hiding_state = $FiniteStateMachine/PlayerHidingState as PlayerHidingState
+@onready var player_waiting_state = $FiniteStateMachine/PlayerWaitingState as PlayerWaitingState
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -36,6 +37,12 @@ func _physics_process(delta) -> void:
 
 func apply_gravity(delta) -> void:
 	velocity.y += gravity * delta
+
+func player_is_waiting():
+	FSM.change_state(player_waiting_state)
+
+func player_finished_waiting():
+	FSM.change_state(player_idle_state)
 
 func connect_camera(camera) -> void:
 	var camera_path = camera.get_path()

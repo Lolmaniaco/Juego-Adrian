@@ -14,11 +14,13 @@ var main_quests: Dictionary = {}
 var bool_main_quests: Array
 var actual_main_quest: int = -1
 const main_quests_doc = "res://main_quests_doc.txt"
+var keys: Dictionary = {}
 
 var watermelon:int = 0
 var mission_0:bool = false
 
 func _ready():
+	keys["1"] = true
 	Events.player_dead.connect(_on_player_dead)
 	start_main_quest.connect(_start_main_quest)
 	end_main_quest.connect(_end_main_quest)
@@ -31,10 +33,8 @@ func _ready():
 		iter += 1
 	pass
 
-func _on_player_dead():
-	mission_0 = false
-	watermelon = 0
-	actual_main_quest = -1
+func player_have_key(key_name:String):
+	return keys.get(key_name)
 
 func add_secondary_mission(key, value):
 	if secondary_quests.has(key):
@@ -63,3 +63,8 @@ func _start_main_quest(index:int):
 
 func get_secondary_quests():
 	return secondary_quests
+
+func _on_player_dead():
+	mission_0 = false
+	watermelon = 0
+	actual_main_quest = -1

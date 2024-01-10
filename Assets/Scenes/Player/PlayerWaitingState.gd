@@ -1,10 +1,7 @@
 extends State
-class_name PlayerSpeakingState
-
-signal dialogue_finished
+class_name PlayerWaitingState
 
 func _ready() -> void:
-	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	set_physics_process(false)
 	set_block_signals(true)
 
@@ -18,7 +15,7 @@ func _exit_state() -> void:
 
 func _physics_process(_delta) -> void:
 	if character.velocity.x != 0:
-		character.velocity.x = move_toward(character.velocity.x, 0, SPEED/float(10))
-
-func _on_dialogue_ended(_resource:DialogueResource) -> void:
-	dialogue_finished.emit()
+		character.velocity.x = 0
+	
+	if not animator.is_playing(): 
+		animator.play("idle")

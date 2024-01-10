@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dyvoekdl5sppi"]
+[gd_scene load_steps=19 format=3 uid="uid://dyvoekdl5sppi"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/NPCs/npc.gd" id="1_bxdl8"]
 [ext_resource type="Texture2D" uid="uid://dpadv4ut7m2xb" path="res://Assets/Sprites/NPC/character_malePerson_idle.png" id="1_ccwyw"]
@@ -11,7 +11,6 @@
 [ext_resource type="Script" path="res://Assets/Scripts/FiniteStateMachine.gd" id="9_ssoo6"]
 [ext_resource type="Script" path="res://Assets/Scenes/NPCs/NPCIdleState.gd" id="10_eay3d"]
 [ext_resource type="Script" path="res://Assets/Scenes/NPCs/NPCSpeakingState.gd" id="11_6df6u"]
-[ext_resource type="Resource" uid="uid://cbpv4qym1mm0d" path="res://Assets/Dialogues/test.dialogue" id="12_0to05"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1wrlw"]
 animations = [{
@@ -211,7 +210,6 @@ detector = NodePath("../../NPCDetector")
 
 [node name="NPCSpeakingState" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("character", "animator", "detector")]
 script = ExtResource("11_6df6u")
-dialogue_resource = ExtResource("12_0to05")
 character = NodePath("../..")
 animator = NodePath("../../AnimationPlayer")
 detector = NodePath("../../NPCDetector")

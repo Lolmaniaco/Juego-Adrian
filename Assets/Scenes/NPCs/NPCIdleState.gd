@@ -34,7 +34,7 @@ func _physics_process(_delta):
 		player_close = true
 		if hysteresis.time_left > 0:
 			hysteresis.stop()
-		if character.position.x - player.position.x > 0:
+		if character.global_position.x - player.global_position.x > 0:
 			animatedSprite.flip_h = true
 		else:
 			animatedSprite.flip_h = false

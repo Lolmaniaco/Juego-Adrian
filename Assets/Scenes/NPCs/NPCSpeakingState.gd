@@ -5,26 +5,19 @@ class_name NPCSpeakingState
 
 signal NPC_finished_speaking
 
-@export var dialogue_resource: DialogueResource
-
 var speaking: bool = false
 
 func _ready() -> void:
-	Events.dialogue_ended.connect(_on_dialogue_ended)
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 	set_physics_process(false)
 
 func _enter_state() -> void:
-	Events.player_move = 0
+	DialogueManager.show_dialogue_balloon(character.dialogue_resource)
 	set_physics_process(true)
 
 func _exit_state() -> void:
 	set_physics_process(false)
 
-func _physics_process(_delta):
-	if not speaking:
-		DialogueManager.show_dialogue_balloon(dialogue_resource)
-		speaking = true
-
-func _on_dialogue_ended(_name:String) -> void:
-	speaking = false
+func _on_dialogue_ended(_resource:DialogueResource) -> void:
+	Events.set_last_character_spoken_to(character.get_NPC_name())
 	NPC_finished_speaking.emit()

@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_v1b5d"]
+
+[resource]
+script = ExtResource("1_v1b5d")
+using_states = PackedStringArray()
+titles = {
+"door_locked": "3"
+}
+character_names = PackedStringArray()
+first_title = "3"
+lines = {
+"1": {
+"id": "1",
+"next_id": "3",
+"text": "door_locked",
+"type": "title"
+},
+"3": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "3",
+"next_id": "4",
+"tags": PackedStringArray(),
+"text": "The lab is currently running an experiment. Safe lock activated.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "The lab is currently running an experiment. Safe lock activated.",
+"type": "dialogue"
+},
+"4": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "4",
+"next_id": "5",
+"tags": PackedStringArray(),
+"text": "The door can either be opened from the inside or from the adminstrator console",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "The door can either be opened from the inside or from the adminstrator console",
+"type": "dialogue"
+},
+"5": {
+"id": "5",
+"is_snippet": false,
+"next_id": "end",
+"type": "goto"
+}
+}
+metadata/dialogue_manager_version = "2.32.1"

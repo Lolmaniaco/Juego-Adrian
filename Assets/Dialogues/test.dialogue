@@ -12,10 +12,10 @@ if mission_0 == false:
 			set mission_0 = true
 			do emit("start_main_quest", 0)
 		- Na, passing
-		do emit("dialogue_ended", "Guturu")
+		do emit("dialogue_ended")
 		=> END
 	Guturu: Now, if you let me be... I'll be selling some melones, bye.
-	do emit("dialogue_ended", "Guturu")
+	do emit("dialogue_ended")
 	=> END
 else:
 	Guturu: Hi, friend. Have you gathered my melones?
@@ -25,11 +25,11 @@ else:
 			do emit("end_main_quest")
 		else:
 			Guturu: What the hell are you talking about, pendejo. Don't fuck around with me!
-		do emit("dialogue_ended", "Guturu")
+		do emit("dialogue_ended")
 		=> END
 	- No, I haven't been able to
 		Guturu: Okay, no problem. There is no prisa.
-	do emit("dialogue_ended", "Guturu")
+	do emit("dialogue_ended")
 	=> END
 
 ~ start2

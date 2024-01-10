@@ -3,6 +3,9 @@ class_name NPC
 
 signal speaking_with_player
 
+@export var NPC_Name:String
+@export var dialogue_resource: DialogueResource
+
 @onready var FSM = $FiniteStateMachine as FiniteStateMachine
 @onready var npc_idle_state = $FiniteStateMachine/NPCIdleState as NPCIdleState
 @onready var npc_speaking_state = $FiniteStateMachine/NPCSpeakingState as NPCSpeakingState
@@ -21,3 +24,6 @@ func _process(delta) -> void:
 
 func apply_gravity(delta) -> void:
 	velocity.y += gravity * delta
+
+func get_NPC_name():
+	return NPC_Name

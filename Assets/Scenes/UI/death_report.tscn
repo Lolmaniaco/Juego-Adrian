@@ -84,10 +84,10 @@ autowrap_mode = 0
 
 [node name="CharacterMemories" type="MarginContainer" parent="ColorRect/TextureRect"]
 layout_mode = 2
-offset_left = 277.0
-offset_top = 428.0
-offset_right = 1718.0
-offset_bottom = 728.0
+offset_left = 277.089
+offset_top = 410.014
+offset_right = 1718.09
+offset_bottom = 710.014
 rotation = 0.00945769
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
@@ -108,10 +108,10 @@ fit_content = true
 
 [node name="DeathDescription" type="MarginContainer" parent="ColorRect/TextureRect"]
 layout_mode = 2
-offset_left = 269.954
-offset_top = 749.985
-offset_right = 959.954
-offset_bottom = 1639.99
+offset_left = 271.729
+offset_top = 769.984
+offset_right = 961.729
+offset_bottom = 1659.99
 rotation = 0.00945769
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20

@@ -16,7 +16,7 @@ var last_character_spoken = ""
 func _ready():
 	player.connect_camera(main_camera)
 	Events.player_dead.connect(_on_player_dead)
-	Events.dialogue_ended.connect(_on_dialogue_ended)
+	DialogueManager.dialogue_ended.connect(_on_dialogue_ended)
 
 func _process(_delta):
 	match state:
@@ -31,12 +31,11 @@ func normal_state():
 			start_menu.pause_game()
 
 func death_report_state():
-	
 	if Input.is_action_just_pressed("ChangeGravity"):
 		get_tree().reload_current_scene()
 
-func _on_dialogue_ended(NPC_name:String):
-	last_character_spoken = NPC_name
+func _on_dialogue_ended(_resource:DialogueResource):
+	last_character_spoken = Events.get_last_character_spoken_to()
 
 func _on_player_dead(death_cause:String):
 	var memories = ""

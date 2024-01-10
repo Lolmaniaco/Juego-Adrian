@@ -1,0 +1,20 @@
+~ traped_investigator_start
+Investigator: Oh my God. Where did you come from?
+- Hello, there
+	Investigator: General Kenobi... Fuck, hell. I'm too damn nerdy.
+	Investigator: There's no time to chat. You gotta save me!
+	=> trapped_investigator_solution
+- I'm here to save you
+	Investigator: Thanks to the heavens. 
+	=> trapped_investigator_solution
+
+~ trapped_investigator_solution
+Investigator: The door is sealed.
+Investigator: You need to reach the control room and open this oven or I'm fried chicken.
+do emit("dialogue_ended")
+=> END
+
+~ traped_investigator_hint
+Investigator: You came from the air ventilation system with your grav boots, right?
+Investigator: You should be able to jump back to the ceiling and cross the rooms. There's a connection to let the particles go into the test computer.
+do emit("dialogue_ended")
