@@ -39,6 +39,10 @@ DOOR_SIDE_OPENS = 2
 [node name="NPC" parent="." instance=ExtResource("5_dqbxy")]
 position = Vector2(-639, 590)
 dialogue_resource = ExtResource("6_8e8o7")
+dialogues = ["traped_investigator_start", "traped_investigator_hint"]
+
+[node name="NPC2" parent="." instance=ExtResource("5_dqbxy")]
+position = Vector2(-915, 592)
 
 [node name="Door3" parent="." instance=ExtResource("3_4j4gg")]
 position = Vector2(-1016, 616)

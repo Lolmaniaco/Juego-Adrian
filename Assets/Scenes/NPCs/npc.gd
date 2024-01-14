@@ -5,6 +5,7 @@ signal speaking_with_player
 
 @export var NPC_Name:String
 @export var dialogue_resource: DialogueResource
+@export var dialogues:Array = []
 
 @onready var FSM = $FiniteStateMachine as FiniteStateMachine
 @onready var npc_idle_state = $FiniteStateMachine/NPCIdleState as NPCIdleState
@@ -15,7 +16,7 @@ var speaking: bool = false
 
 func _ready() -> void:
 	npc_idle_state.NPC_started_speaking.connect(FSM.change_state.bind(npc_speaking_state))
-	
+	 
 	npc_speaking_state.NPC_finished_speaking.connect(FSM.change_state.bind(npc_idle_state))
 
 func _process(delta) -> void:

@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_qasn1"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_42sfb"]
 
 [resource]
-script = ExtResource("1_qasn1")
+script = ExtResource("1_42sfb")
 using_states = PackedStringArray()
 titles = {
-"traped_investigator_hint": "18",
+"traped_investigator_hint": "16",
 "traped_investigator_start": "2",
 "trapped_investigator_solution": "12"
 }
@@ -31,70 +31,50 @@ lines = {
 "id": "12",
 "next_id": "13",
 "tags": PackedStringArray(),
-"text": "The door is sealed.",
+"text": "The door is sealed. You need to reach the control room and open this oven or I'm fried chicken.",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "The door is sealed.",
+"translation_key": "The door is sealed. You need to reach the control room and open this oven or I'm fried chicken.",
 "type": "dialogue"
 },
 "13": {
-"character": "Investigator",
-"character_replacements": Array[Dictionary]([]),
 "id": "13",
-"next_id": "14",
-"tags": PackedStringArray(),
-"text": "You need to reach the control room and open this oven or I'm fried chicken.",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "You need to reach the control room and open this oven or I'm fried chicken.",
-"type": "dialogue"
-},
-"14": {
-"id": "14",
-"mutation": {
-"expression": Array[Dictionary]([{
-"function": "emit",
-"type": "function",
-"value": Array[Array]([Array[Dictionary]([{
-"type": "string",
-"value": "dialogue_ended"
-}])])
-}])
-},
-"next_id": "15",
-"type": "mutation"
-},
-"15": {
-"id": "15",
 "is_snippet": false,
 "next_id": "end",
 "type": "goto"
 },
-"17": {
-"id": "17",
-"next_id": "18",
+"15": {
+"id": "15",
+"next_id": "16",
 "text": "traped_investigator_hint",
 "type": "title"
 },
-"18": {
+"16": {
 "character": "Investigator",
 "character_replacements": Array[Dictionary]([]),
-"id": "18",
-"next_id": "19",
+"id": "16",
+"next_id": "17",
 "tags": PackedStringArray(),
 "text": "You came from the air ventilation system with your grav boots, right?",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "You came from the air ventilation system with your grav boots, right?",
 "type": "dialogue"
 },
-"19": {
+"17": {
 "character": "Investigator",
 "character_replacements": Array[Dictionary]([]),
-"id": "19",
-"next_id": "20",
+"id": "17",
+"next_id": "18",
 "tags": PackedStringArray(),
 "text": "You should be able to jump back to the ceiling and cross the rooms. There's a connection to let the particles go into the test computer.",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "You should be able to jump back to the ceiling and cross the rooms. There's a connection to let the particles go into the test computer.",
 "type": "dialogue"
+},
+"18": {
+"id": "18",
+"is_snippet": false,
+"next_id": "end",
+"type": "goto"
 },
 "2": {
 "character": "Investigator",
@@ -106,21 +86,6 @@ lines = {
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "Oh my God. Where did you come from?",
 "type": "dialogue"
-},
-"20": {
-"id": "20",
-"mutation": {
-"expression": Array[Dictionary]([{
-"function": "emit",
-"type": "function",
-"value": Array[Array]([Array[Dictionary]([{
-"type": "string",
-"value": "dialogue_ended"
-}])])
-}])
-},
-"next_id": "",
-"type": "mutation"
 },
 "3": {
 "character": "",
@@ -142,9 +107,9 @@ lines = {
 "next_id": "5",
 "parent_id": "3",
 "tags": PackedStringArray(),
-"text": "General Kenobi... Fuck, hell. I'm too damn nerdy.",
+"text": "General Kenobi...",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "General Kenobi... Fuck, hell. I'm too damn nerdy.",
+"translation_key": "General Kenobi...",
 "type": "dialogue"
 },
 "5": {
