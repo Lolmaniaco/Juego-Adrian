@@ -1,18 +1,44 @@
-~ traped_investigator_start
+~ trapped_inv_start
 Investigator: Oh my God. Where did you come from?
 - Hello, there
 	Investigator: General Kenobi...
 	Investigator: There's no time to chat. You gotta save me!
-	=> trapped_investigator_solution
+	=> trapped_inv_solution
 - I'm here to save you
 	Investigator: Thanks to the heavens. 
-	=> trapped_investigator_solution
+	=> trapped_inv_solution
 
-~ trapped_investigator_solution
+~ trapped_inv_solution
 Investigator: The door is sealed. You need to reach the control room and open this oven or I'm fried chicken.
 => END
 
-~ traped_investigator_hint
+~ trapped_inv_hint
 Investigator: You came from the air ventilation system with your grav boots, right?
 Investigator: You should be able to jump back to the ceiling and cross the rooms. There's a connection to let the particles go into the test computer.
 => END
+
+~ fainted_inv
+The scientist has fainted, but he doesn't look harmed at all. Perhaps just a little concussion.
+You take the LV.1 card from his pocket
+do player_give_key("LV.1")
+=> END
+
+~ PC_online
+PC: Welcome to the main board of the test environment. Experiments are being executed on cell 2.
+PC: Alert! Major hazard inside test cell 2.
+
+~ PC_options
+PC: Please, inform main command and await for orders.
+- Open the door
+	PC: Opening door... System malfunctioning. 
+	PC: Door can only be opened from the inside.
+	=> PC_options
+- Send alert to main command
+	PC: Send alert message to main command...
+	=> PC_options
+- Open ventilation system
+	PC: Opening ventilation from cell 1, 2 and 3... [wait=2]
+	PC: Alert! Depressurization detected. Ventilation system will shut down in 10 seconds.
+	=> END
+- Quit
+	=> END

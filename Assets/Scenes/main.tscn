@@ -27,7 +27,7 @@ visible = false
 
 [node name="Player" parent="." instance=ExtResource("1_qnto4")]
 z_index = 100
-position = Vector2(-526, 328)
+position = Vector2(-600, 321)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
@@ -36,19 +36,19 @@ ignore_rotation = false
 position = Vector2(243, -259)
 script = null
 
-[node name="Door" parent="PilotLevel" index="1"]
+[node name="Door" parent="PilotLevel" index="2"]
 DOOR_BEHAVIOUR = 1
 DOOR_SIDE_OPENS = 0
 
-[node name="Door2" parent="PilotLevel" index="2"]
+[node name="Door2" parent="PilotLevel" index="3"]
 dialogue_resource = ExtResource("7_fc8tk")
 
-[node name="Door4" parent="PilotLevel" index="3"]
+[node name="Door4" parent="PilotLevel" index="4"]
 position = Vector2(-977, 1065)
 dialogue_resource = ExtResource("7_fc8tk")
 key_needed = "1"
 
-[node name="NPC" parent="PilotLevel" index="4"]
+[node name="NPC" parent="PilotLevel" index="6"]
 NPC_Name = "Guturu"
 
 [connection signal="show_main_quest" from="UI/start_menu" to="UI/QuestsBox" method="_on_start_menu_show_main_quest"]

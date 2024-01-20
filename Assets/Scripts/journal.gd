@@ -20,7 +20,6 @@ var watermelon:int = 0
 var mission_0:bool = false
 
 func _ready():
-	keys["1"] = true
 	Events.player_dead.connect(_on_player_dead)
 	start_main_quest.connect(_start_main_quest)
 	end_main_quest.connect(_end_main_quest)
@@ -35,6 +34,9 @@ func _ready():
 
 func player_have_key(key_name:String):
 	return keys.get(key_name)
+
+func player_give_key(key_name:String):
+	keys[key_name] = true
 
 func add_secondary_mission(key, value):
 	if secondary_quests.has(key):

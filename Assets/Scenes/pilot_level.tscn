@@ -1,12 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1yfro7o2476p"]
+[gd_scene load_steps=11 format=3 uid="uid://b1yfro7o2476p"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/main.gd" id="1_216t5"]
 [ext_resource type="TileSet" uid="uid://dm00npul4akml" path="res://Assets/Scenes/World/main.tres" id="1_rgrf4"]
+[ext_resource type="PackedScene" uid="uid://flbmvlv3xnp6" path="res://Assets/Scenes/Enemies/fissure.tscn" id="2_3e3i7"]
 [ext_resource type="PackedScene" uid="uid://c2qr0iihsuptd" path="res://Assets/Scenes/World/door.tscn" id="3_4j4gg"]
 [ext_resource type="Resource" uid="uid://bu1eonqu56l25" path="res://Assets/Dialogues/door_locked.dialogue" id="4_a1mnu"]
 [ext_resource type="PackedScene" uid="uid://dyvoekdl5sppi" path="res://Assets/Scenes/NPCs/npc.tscn" id="5_dqbxy"]
 [ext_resource type="Resource" uid="uid://r2b3iog3a2e0" path="res://Assets/Dialogues/pilot_level.dialogue" id="6_8e8o7"]
 [ext_resource type="PackedScene" uid="uid://brfwokkxbqdni" path="res://Assets/Scenes/World/elevator.tscn" id="7_8480q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5qnf"]
+size = Vector2(13.209, 49.8048)
 
 [sub_resource type="Curve2D" id="Curve2D_1unli"]
 _data = {
@@ -16,6 +20,15 @@ point_count = 2
 
 [node name="PilotLevel" type="Node2D"]
 script = ExtResource("1_216t5")
+
+[node name="Fissure" parent="." instance=ExtResource("2_3e3i7")]
+position = Vector2(-721, 26)
+rotation = 0.391437
+scale = Vector2(3.71007, 2.86235)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fissure"]
+position = Vector2(-0.0554657, -0.0666199)
+shape = SubResource("RectangleShape2D_a5qnf")
 
 [node name="TileMap" type="TileMap" parent="."]
 rotation = 3.14159
@@ -36,13 +49,25 @@ DOOR_SIDE_OPENS = 2
 position = Vector2(-976, 1064)
 DOOR_SIDE_OPENS = 2
 
+[node name="Door5" parent="." instance=ExtResource("3_4j4gg")]
+position = Vector2(-183, 21)
+dialogue_resource = ExtResource("4_a1mnu")
+
 [node name="NPC" parent="." instance=ExtResource("5_dqbxy")]
 position = Vector2(-639, 590)
 dialogue_resource = ExtResource("6_8e8o7")
-dialogues = ["traped_investigator_start", "traped_investigator_hint"]
+dialogues = ["trapped_inv_start", "trapped_inv_hint"]
 
 [node name="NPC2" parent="." instance=ExtResource("5_dqbxy")]
-position = Vector2(-915, 592)
+position = Vector2(-1196, 589)
+dialogue_resource = ExtResource("6_8e8o7")
+dialogues = ["fainted_inv"]
+
+[node name="NPC3" parent="." instance=ExtResource("5_dqbxy")]
+position = Vector2(-633, 1037)
+NPC_Name = "PC"
+dialogue_resource = ExtResource("6_8e8o7")
+dialogues = ["PC_online", "PC_options"]
 
 [node name="Door3" parent="." instance=ExtResource("3_4j4gg")]
 position = Vector2(-1016, 616)
@@ -50,7 +75,7 @@ DOOR_BEHAVIOUR = 1
 DOOR_SIDE_OPENS = 2
 dialogue_resource = ExtResource("4_a1mnu")
 need_key = true
-key_needed = "1"
+key_needed = "LV.1"
 
 [node name="Elevator" parent="." instance=ExtResource("7_8480q")]
 position = Vector2(-1320, 1081)

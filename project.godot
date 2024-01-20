@@ -10,7 +10,9 @@ config_version=5
 
 [application]
 
-config/name="Outer Odyssey Fate"
+config/name="Juego Independiente de Adrián"
+config/description="Juego independiente de Adrián hecho en Godot.  
+Este juego es el primero que desarrollo yo mismo y estoy aprendiendo Godot a medida que lo voy haciendo."
 run/main_scene="res://Assets/Scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"

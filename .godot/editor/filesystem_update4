@@ -1,11 +1,8 @@
-res://Assets/Scenes/World/elevator.tscn
+res://Assets/Scenes/pilot_level.tscn
 res://Assets/Scenes/NPCs/npc.gd
 res://Assets/themes/default_theme.tres
 res://Assets/Scenes/World/main.tres
-res://Assets/Scenes/NPCs/NPCIdleState.gd
-res://Assets/Scenes/NPCs/npc.tscn
-res://Assets/Scenes/pilot_level.tscn
-res://Assets/Scenes/NPCs/NPCSpeakingState.gd
 res://Assets/Scenes/main.tscn
+res://Assets/Scenes/NPCs/npc.tscn
 res://Assets/Scenes/test_world.tscn
-res://Assets/Scenes/UI/death_report.tscn
+res://Assets/Scenes/Player/player.tscn
