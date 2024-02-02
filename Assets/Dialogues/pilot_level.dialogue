@@ -39,6 +39,7 @@ PC: Please, inform main command and await for orders.
 - Open ventilation system
 	PC: Opening ventilation from cell 1, 2 and 3... [wait=2]
 	PC: Alert! Depressurization detected. Ventilation system will shut down in 10 seconds.
+	do emit("open_vent")
 	=> END
 - Quit
 	=> END

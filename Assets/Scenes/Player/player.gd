@@ -1,7 +1,8 @@
 extends CharacterBody2D
 class_name Player
 
-@export var JUMP_VELOCITY = -400.0
+enum grav{UP, DOWN}
+@export var gravity_dir = grav.DOWN
 
 @onready var remoteTransform = $RemoteTransform2D
 @onready var FSM = $FiniteStateMachine as FiniteStateMachine
@@ -30,6 +31,9 @@ func _ready() -> void:
 	player_gravity_state.gravity_changed.connect(FSM.change_state.bind(player_idle_state))
 	
 	player_speaking_state.dialogue_finished.connect(FSM.change_state.bind(player_idle_state))
+	
+	if gravity_dir == grav.UP:
+		FSM.change_state(player_gravity_state)
 
 func _physics_process(delta) -> void:
 	apply_gravity(delta)

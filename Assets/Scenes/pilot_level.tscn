@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b1yfro7o2476p"]
 
-[ext_resource type="Script" path="res://Assets/Scenes/main.gd" id="1_216t5"]
+[ext_resource type="Script" path="res://Assets/Scenes/pilot_level.gd" id="1_68qmj"]
 [ext_resource type="TileSet" uid="uid://dm00npul4akml" path="res://Assets/Scenes/World/main.tres" id="1_rgrf4"]
 [ext_resource type="PackedScene" uid="uid://flbmvlv3xnp6" path="res://Assets/Scenes/Enemies/fissure.tscn" id="2_3e3i7"]
 [ext_resource type="PackedScene" uid="uid://c2qr0iihsuptd" path="res://Assets/Scenes/World/door.tscn" id="3_4j4gg"]
@@ -19,7 +19,7 @@ _data = {
 point_count = 2
 
 [node name="PilotLevel" type="Node2D"]
-script = ExtResource("1_216t5")
+script = ExtResource("1_68qmj")
 
 [node name="Fissure" parent="." instance=ExtResource("2_3e3i7")]
 position = Vector2(-721, 26)
@@ -45,12 +45,21 @@ dialogue_resource = ExtResource("4_a1mnu")
 position = Vector2(-448, 1064)
 DOOR_SIDE_OPENS = 2
 
+[node name="Door3" parent="." instance=ExtResource("3_4j4gg")]
+position = Vector2(-1016, 616)
+DOOR_BEHAVIOUR = 1
+DOOR_SIDE_OPENS = 2
+dialogue_resource = ExtResource("4_a1mnu")
+need_key = true
+key_needed = "LV.1"
+
 [node name="Door4" parent="." instance=ExtResource("3_4j4gg")]
 position = Vector2(-976, 1064)
 DOOR_SIDE_OPENS = 2
 
-[node name="Door5" parent="." instance=ExtResource("3_4j4gg")]
-position = Vector2(-183, 21)
+[node name="Vent" parent="." instance=ExtResource("3_4j4gg")]
+unique_name_in_owner = true
+position = Vector2(-51, 21)
 dialogue_resource = ExtResource("4_a1mnu")
 
 [node name="NPC" parent="." instance=ExtResource("5_dqbxy")]
@@ -68,14 +77,6 @@ position = Vector2(-633, 1037)
 NPC_Name = "PC"
 dialogue_resource = ExtResource("6_8e8o7")
 dialogues = ["PC_online", "PC_options"]
-
-[node name="Door3" parent="." instance=ExtResource("3_4j4gg")]
-position = Vector2(-1016, 616)
-DOOR_BEHAVIOUR = 1
-DOOR_SIDE_OPENS = 2
-dialogue_resource = ExtResource("4_a1mnu")
-need_key = true
-key_needed = "LV.1"
 
 [node name="Elevator" parent="." instance=ExtResource("7_8480q")]
 position = Vector2(-1320, 1081)

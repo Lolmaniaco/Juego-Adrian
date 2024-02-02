@@ -1,8 +1,10 @@
 res://Assets/Scenes/pilot_level.tscn
 res://Assets/Scenes/NPCs/npc.gd
+res://Assets/Scenes/pilot_level.gd
 res://Assets/themes/default_theme.tres
 res://Assets/Scenes/World/main.tres
 res://Assets/Scenes/main.tscn
 res://Assets/Scenes/NPCs/npc.tscn
 res://Assets/Scenes/test_world.tscn
 res://Assets/Scenes/Player/player.tscn
+res://Assets/Scenes/Player/player.gd
