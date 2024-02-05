@@ -7,6 +7,11 @@ The lab is currently running an experiment. Safe lock activated.
 The door can either be opened from the inside or from the adminstrator console
 => END
 
+~ ventilation_closed
+The vent door could be opened, but the system is digitally locked.
+I can't force it.
+=> END
+
 ~ have_key
 Correct security level card. Opening door.
 => END

@@ -7,7 +7,8 @@ enum side {left, right, both}
 @export var DOOR_SIDE_OPENS = side.left
 
 @export var dialogue_resource: DialogueResource
-@export var need_key: bool = false
+@export var door_message:String = ""
+@export var need_key:bool = false
 @export var key_needed:String = ""
 
 @onready var collision_shape_2d = $CollisionShape2D
@@ -43,13 +44,13 @@ func open_unlocked_door():
 			already_opened = true
 			open_door("right_side")
 		else:
-			DialogueManager.show_dialogue_balloon(dialogue_resource, "experiment_lab")
+			DialogueManager.show_dialogue_balloon(dialogue_resource, door_message)
 	elif DOOR_SIDE_OPENS == side.left:
 		if already_opened or temp_player.global_position.x < global_position.x: 
 			already_opened = true
 			open_door("left_side")
 		else:
-			DialogueManager.show_dialogue_balloon(dialogue_resource, "experiment_lab")
+			DialogueManager.show_dialogue_balloon(dialogue_resource, door_message)
 	else:
 		if temp_player.global_position.x > global_position.x:
 			open_door("right_side")
@@ -74,6 +75,12 @@ func close_door():
 		opened_door_sprite_left.visible = false
 	else:
 		opened_door_sprite_right.visible = false
+
+func deactivate_door():
+	if collision_shape_2d.disabled == true:
+		collision_shape_2d.set_deferred("disabled", false)
+	else:
+		collision_shape_2d.set_deferred("disabled", true)
 
 func _on_area_2d_body_entered(body):
 	if not body is Player: return

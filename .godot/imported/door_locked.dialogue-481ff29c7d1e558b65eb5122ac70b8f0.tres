@@ -1,15 +1,16 @@
 [gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_5e2vm"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_k6ah3"]
 
 [resource]
-script = ExtResource("1_5e2vm")
+script = ExtResource("1_k6ah3")
 using_states = PackedStringArray()
 titles = {
 "experiment_lab": "6",
-"have_key": "11",
-"havent_key": "15",
-"start": "2"
+"have_key": "16",
+"havent_key": "20",
+"start": "2",
+"ventilation_closed": "11"
 }
 character_names = PackedStringArray()
 first_title = "2"
@@ -23,7 +24,7 @@ lines = {
 "10": {
 "id": "10",
 "next_id": "11",
-"text": "have_key",
+"text": "ventilation_closed",
 "type": "title"
 },
 "11": {
@@ -32,39 +33,56 @@ lines = {
 "id": "11",
 "next_id": "12",
 "tags": PackedStringArray(),
+"text": "The vent door could be opened, but the system is digitally locked.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "The vent door could be opened, but the system is digitally locked.",
+"type": "dialogue"
+},
+"12": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "12",
+"next_id": "13",
+"tags": PackedStringArray(),
+"text": "I can't force it.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "I can't force it.",
+"type": "dialogue"
+},
+"13": {
+"id": "13",
+"is_snippet": false,
+"next_id": "end",
+"type": "goto"
+},
+"15": {
+"id": "15",
+"next_id": "16",
+"text": "have_key",
+"type": "title"
+},
+"16": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "16",
+"next_id": "17",
+"tags": PackedStringArray(),
 "text": "Correct security level card. Opening door.",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "Correct security level card. Opening door.",
 "type": "dialogue"
 },
-"12": {
-"id": "12",
+"17": {
+"id": "17",
 "is_snippet": false,
 "next_id": "end",
 "type": "goto"
 },
-"14": {
-"id": "14",
-"next_id": "15",
+"19": {
+"id": "19",
+"next_id": "20",
 "text": "havent_key",
 "type": "title"
-},
-"15": {
-"character": "",
-"character_replacements": Array[Dictionary]([]),
-"id": "15",
-"next_id": "16",
-"tags": PackedStringArray(),
-"text": "You don't have the security level to open this door.",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "You don't have the security level to open this door.",
-"type": "dialogue"
-},
-"16": {
-"id": "16",
-"is_snippet": false,
-"next_id": "end",
-"type": "goto"
 },
 "2": {
 "character": "",
@@ -76,6 +94,23 @@ lines = {
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "Testing text",
 "type": "dialogue"
+},
+"20": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "20",
+"next_id": "21",
+"tags": PackedStringArray(),
+"text": "You don't have the security level to open this door.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You don't have the security level to open this door.",
+"type": "dialogue"
+},
+"21": {
+"id": "21",
+"is_snippet": false,
+"next_id": "end",
+"type": "goto"
 },
 "3": {
 "id": "3",
@@ -118,4 +153,4 @@ lines = {
 "type": "goto"
 }
 }
-metadata/dialogue_manager_version = "2.32.1"
+metadata/dialogue_manager_version = "2.32.2"
