@@ -53,7 +53,6 @@ DOOR_SIDE_OPENS = 2
 [node name="Door3" parent="." instance=ExtResource("3_4j4gg")]
 position = Vector2(-1016, 616)
 DOOR_BEHAVIOUR = 1
-DOOR_SIDE_OPENS = 2
 dialogue_resource = ExtResource("4_a1mnu")
 need_key = true
 key_needed = "LV.1"

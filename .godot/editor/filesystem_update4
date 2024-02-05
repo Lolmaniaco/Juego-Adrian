@@ -9,3 +9,5 @@ res://Assets/Scenes/test_world.tscn
 res://Assets/Scenes/Player/player.tscn
 res://Assets/Scenes/World/door.gd
 res://Assets/Scenes/World/door.tscn
+res://Assets/Scenes/NPCs/NPCIdleState.gd
+res://Assets/Scenes/UI/death_report.tscn
