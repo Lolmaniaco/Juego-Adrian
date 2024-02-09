@@ -1,66 +1,82 @@
 [gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_x2kde"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_71k3a"]
 
 [resource]
-script = ExtResource("1_x2kde")
+script = ExtResource("1_71k3a")
 using_states = PackedStringArray()
 titles = {
-"PC_online": "27",
-"PC_options": "31",
-"fainted_inv": "21",
-"trapped_inv_hint": "16",
-"trapped_inv_solution": "12",
-"trapped_inv_start": "2"
+"PC_online": "32",
+"PC_options": "36",
+"fainted_inv": "26",
+"trapped_inv_hint": "21",
+"trapped_inv_solution": "17",
+"trapped_inv_start": "3"
 }
 character_names = PackedStringArray("Investigator", "PC")
-first_title = "2"
+first_title = "3"
 lines = {
 "1": {
 "id": "1",
-"next_id": "2",
+"next_id": "3",
 "text": "trapped_inv_start",
 "type": "title"
 },
+"10": {
+"character": "Investigator",
+"character_replacements": Array[Dictionary]([]),
+"id": "10",
+"next_id": "11",
+"parent_id": "9",
+"tags": PackedStringArray(),
+"text": "Thanks to the heavens.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Thanks to the heavens.",
+"type": "dialogue"
+},
 "11": {
 "id": "11",
-"next_id": "12",
-"text": "trapped_inv_solution",
-"type": "title"
-},
-"12": {
-"character": "Investigator",
-"character_replacements": Array[Dictionary]([]),
-"id": "12",
-"next_id": "13",
-"tags": PackedStringArray(),
-"text": "The door is sealed. You need to reach the control room and open this oven or I'm fried chicken.",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "The door is sealed. You need to reach the control room and open this oven or I'm fried chicken.",
-"type": "dialogue"
-},
-"13": {
-"id": "13",
 "is_snippet": false,
-"next_id": "end",
+"next_id": "17",
+"parent_id": "9",
 "type": "goto"
 },
-"15": {
-"id": "15",
-"next_id": "16",
-"text": "trapped_inv_hint",
-"type": "title"
+"12": {
+"id": "12",
+"next_conditional_id": "17",
+"next_id": "13",
+"next_id_after": "17",
+"type": "condition"
 },
-"16": {
+"13": {
 "character": "Investigator",
 "character_replacements": Array[Dictionary]([]),
+"id": "13",
+"next_id": "14",
+"parent_id": "12",
+"tags": PackedStringArray(),
+"text": "Damn, son. You entered here without saying anything and in an instant you opened the door saving me!",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Damn, son. You entered here without saying anything and in an instant you opened the door saving me!",
+"type": "dialogue"
+},
+"14": {
+"character": "Investigator",
+"character_replacements": Array[Dictionary]([]),
+"id": "14",
+"next_id": "17",
+"parent_id": "12",
+"tags": PackedStringArray(),
+"text": "Thank you! You're my saviour.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Thank you! You're my saviour.",
+"type": "dialogue"
+},
+"16": {
 "id": "16",
 "next_id": "17",
-"tags": PackedStringArray(),
-"text": "You came from the air ventilation system with your grav boots, right?",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "You came from the air ventilation system with your grav boots, right?",
-"type": "dialogue"
+"text": "trapped_inv_solution",
+"type": "title"
 },
 "17": {
 "character": "Investigator",
@@ -68,9 +84,9 @@ lines = {
 "id": "17",
 "next_id": "18",
 "tags": PackedStringArray(),
-"text": "You should be able to jump back to the ceiling and cross the rooms. There's a connection to let the particles go into the test computer.",
+"text": "The door is sealed. You need to reach the control room and open this oven or I'm fried chicken.",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "You should be able to jump back to the ceiling and cross the rooms. There's a connection to let the particles go into the test computer.",
+"translation_key": "The door is sealed. You need to reach the control room and open this oven or I'm fried chicken.",
 "type": "dialogue"
 },
 "18": {
@@ -79,47 +95,70 @@ lines = {
 "next_id": "end",
 "type": "goto"
 },
-"2": {
-"character": "Investigator",
-"character_replacements": Array[Dictionary]([]),
-"id": "2",
-"next_id": "3",
-"tags": PackedStringArray(),
-"text": "Oh my God. Where did you come from?",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "Oh my God. Where did you come from?",
-"type": "dialogue"
-},
 "20": {
 "id": "20",
 "next_id": "21",
-"text": "fainted_inv",
+"text": "trapped_inv_hint",
 "type": "title"
 },
 "21": {
-"character": "",
+"character": "Investigator",
 "character_replacements": Array[Dictionary]([]),
 "id": "21",
 "next_id": "22",
+"tags": PackedStringArray(),
+"text": "You came from the air ventilation system with your grav boots, right?",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You came from the air ventilation system with your grav boots, right?",
+"type": "dialogue"
+},
+"22": {
+"character": "Investigator",
+"character_replacements": Array[Dictionary]([]),
+"id": "22",
+"next_id": "23",
+"tags": PackedStringArray(),
+"text": "You should be able to jump back to the ceiling and cross the rooms. There's a connection to let the particles go into the test computer.",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "You should be able to jump back to the ceiling and cross the rooms. There's a connection to let the particles go into the test computer.",
+"type": "dialogue"
+},
+"23": {
+"id": "23",
+"is_snippet": false,
+"next_id": "end",
+"type": "goto"
+},
+"25": {
+"id": "25",
+"next_id": "26",
+"text": "fainted_inv",
+"type": "title"
+},
+"26": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "26",
+"next_id": "27",
 "tags": PackedStringArray(),
 "text": "The scientist has fainted, but he doesn't look harmed at all. Perhaps just a little concussion.",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "The scientist has fainted, but he doesn't look harmed at all. Perhaps just a little concussion.",
 "type": "dialogue"
 },
-"22": {
+"27": {
 "character": "",
 "character_replacements": Array[Dictionary]([]),
-"id": "22",
-"next_id": "23",
+"id": "27",
+"next_id": "28",
 "tags": PackedStringArray(),
 "text": "You take the LV.1 card from his pocket",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "You take the LV.1 card from his pocket",
 "type": "dialogue"
 },
-"23": {
-"id": "23",
+"28": {
+"id": "28",
 "mutation": {
 "expression": Array[Dictionary]([{
 "function": "player_give_key",
@@ -130,159 +169,121 @@ lines = {
 }])])
 }])
 },
-"next_id": "24",
+"next_id": "29",
 "type": "mutation"
 },
-"24": {
-"id": "24",
+"29": {
+"id": "29",
 "is_snippet": false,
 "next_id": "end",
 "type": "goto"
 },
-"26": {
-"id": "26",
-"next_id": "27",
+"3": {
+"condition": {
+"expression": Array[Dictionary]([{
+"type": "dictionary_reference",
+"value": Array[Dictionary]([{
+"type": "string",
+"value": "LV.1"
+}]),
+"variable": "keys"
+}, {
+"type": "comparison",
+"value": "=="
+}, {
+"type": "variable",
+"value": "false"
+}, {
+"type": "colon"
+}])
+},
+"id": "3",
+"next_conditional_id": "12",
+"next_id": "4",
+"next_id_after": "17",
+"type": "condition"
+},
+"31": {
+"id": "31",
+"next_id": "32",
 "text": "PC_online",
 "type": "title"
 },
-"27": {
+"32": {
 "character": "PC",
 "character_replacements": Array[Dictionary]([]),
-"id": "27",
-"next_id": "28",
+"id": "32",
+"next_id": "33",
 "tags": PackedStringArray(),
 "text": "Welcome to the main board of the test environment. Experiments are being executed on cell 2.",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "Welcome to the main board of the test environment. Experiments are being executed on cell 2.",
 "type": "dialogue"
 },
-"28": {
+"33": {
 "character": "PC",
 "character_replacements": Array[Dictionary]([]),
-"id": "28",
-"next_id": "31",
+"id": "33",
+"next_id": "36",
 "tags": PackedStringArray(),
 "text": "Alert! Major hazard inside test cell 2.",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "Alert! Major hazard inside test cell 2.",
 "type": "dialogue"
 },
-"3": {
-"character": "",
-"character_replacements": Array[Dictionary]([]),
-"id": "3",
-"next_id": "4",
-"next_id_after": "12",
-"responses": PackedStringArray("3", "7"),
-"tags": PackedStringArray(),
-"text": "Hello, there",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "Hello, there",
-"type": "response"
-},
-"30": {
-"id": "30",
-"next_id": "31",
+"35": {
+"id": "35",
+"next_id": "36",
 "text": "PC_options",
 "type": "title"
 },
-"31": {
+"36": {
 "character": "PC",
 "character_replacements": Array[Dictionary]([]),
-"id": "31",
-"next_id": "32",
+"id": "36",
+"next_id": "37",
 "tags": PackedStringArray(),
 "text": "Please, inform main command and await for orders.",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "Please, inform main command and await for orders.",
 "type": "dialogue"
 },
-"32": {
+"37": {
 "character": "",
 "character_replacements": Array[Dictionary]([]),
-"id": "32",
-"next_id": "33",
+"id": "37",
+"next_id": "38",
 "next_id_after": "end!",
-"responses": PackedStringArray("32", "36", "39", "44"),
+"responses": PackedStringArray("37", "41", "44", "49"),
 "tags": PackedStringArray(),
 "text": "Open the door",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "Open the door",
 "type": "response"
 },
-"33": {
+"38": {
 "character": "PC",
 "character_replacements": Array[Dictionary]([]),
-"id": "33",
-"next_id": "34",
-"parent_id": "32",
+"id": "38",
+"next_id": "39",
+"parent_id": "37",
 "tags": PackedStringArray(),
 "text": "Opening door... System malfunctioning.",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "Opening door... System malfunctioning.",
 "type": "dialogue"
 },
-"34": {
+"39": {
 "character": "PC",
 "character_replacements": Array[Dictionary]([]),
-"id": "34",
-"next_id": "35",
-"parent_id": "32",
+"id": "39",
+"next_id": "40",
+"parent_id": "37",
 "tags": PackedStringArray(),
 "text": "Door can only be opened from the inside.",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "Door can only be opened from the inside.",
 "type": "dialogue"
-},
-"35": {
-"id": "35",
-"is_snippet": false,
-"next_id": "31",
-"parent_id": "32",
-"type": "goto"
-},
-"36": {
-"character": "",
-"character_replacements": Array[Dictionary]([]),
-"id": "36",
-"next_id": "37",
-"next_id_after": "end!",
-"tags": PackedStringArray(),
-"text": "Send alert to main command",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "Send alert to main command",
-"type": "response"
-},
-"37": {
-"character": "PC",
-"character_replacements": Array[Dictionary]([]),
-"id": "37",
-"next_id": "38",
-"parent_id": "36",
-"tags": PackedStringArray(),
-"text": "Send alert message to main command...",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "Send alert message to main command...",
-"type": "dialogue"
-},
-"38": {
-"id": "38",
-"is_snippet": false,
-"next_id": "31",
-"parent_id": "36",
-"type": "goto"
-},
-"39": {
-"character": "",
-"character_replacements": Array[Dictionary]([]),
-"id": "39",
-"next_id": "40",
-"next_id_after": "end!",
-"tags": PackedStringArray(),
-"text": "Open ventilation system",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "Open ventilation system",
-"type": "response"
 },
 "4": {
 "character": "Investigator",
@@ -291,37 +292,87 @@ lines = {
 "next_id": "5",
 "parent_id": "3",
 "tags": PackedStringArray(),
-"text": "General Kenobi...",
+"text": "Oh my God. Where did you come from?",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "General Kenobi...",
+"translation_key": "Oh my God. Where did you come from?",
 "type": "dialogue"
 },
 "40": {
-"character": "PC",
-"character_replacements": Array[Dictionary]([]),
 "id": "40",
-"next_id": "41",
-"parent_id": "39",
-"tags": PackedStringArray(),
-"text": "Opening ventilation from cell 1, 2 and 3... [wait=2]",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "Opening ventilation from cell 1, 2 and 3... [wait=2]",
-"type": "dialogue"
+"is_snippet": false,
+"next_id": "36",
+"parent_id": "37",
+"type": "goto"
 },
 "41": {
-"character": "PC",
+"character": "",
 "character_replacements": Array[Dictionary]([]),
 "id": "41",
 "next_id": "42",
-"parent_id": "39",
+"next_id_after": "end!",
+"tags": PackedStringArray(),
+"text": "Send alert to main command",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Send alert to main command",
+"type": "response"
+},
+"42": {
+"character": "PC",
+"character_replacements": Array[Dictionary]([]),
+"id": "42",
+"next_id": "43",
+"parent_id": "41",
+"tags": PackedStringArray(),
+"text": "Send alert message to main command...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Send alert message to main command...",
+"type": "dialogue"
+},
+"43": {
+"id": "43",
+"is_snippet": false,
+"next_id": "36",
+"parent_id": "41",
+"type": "goto"
+},
+"44": {
+"character": "",
+"character_replacements": Array[Dictionary]([]),
+"id": "44",
+"next_id": "45",
+"next_id_after": "end!",
+"tags": PackedStringArray(),
+"text": "Open ventilation system",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Open ventilation system",
+"type": "response"
+},
+"45": {
+"character": "PC",
+"character_replacements": Array[Dictionary]([]),
+"id": "45",
+"next_id": "46",
+"parent_id": "44",
+"tags": PackedStringArray(),
+"text": "Opening ventilation from cell 1, 2 and 3... [next=auto]",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Opening ventilation from cell 1, 2 and 3... [next=auto]",
+"type": "dialogue"
+},
+"46": {
+"character": "PC",
+"character_replacements": Array[Dictionary]([]),
+"id": "46",
+"next_id": "47",
+"parent_id": "44",
 "tags": PackedStringArray(),
 "text": "Alert! Depressurization detected. Ventilation system will shut down in 10 seconds.",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "Alert! Depressurization detected. Ventilation system will shut down in 10 seconds.",
 "type": "dialogue"
 },
-"42": {
-"id": "42",
+"47": {
+"id": "47",
 "mutation": {
 "expression": Array[Dictionary]([{
 "function": "emit",
@@ -332,22 +383,22 @@ lines = {
 }])])
 }])
 },
-"next_id": "43",
-"parent_id": "39",
+"next_id": "48",
+"parent_id": "44",
 "type": "mutation"
 },
-"43": {
-"id": "43",
+"48": {
+"id": "48",
 "is_snippet": false,
 "next_id": "end",
-"parent_id": "39",
+"parent_id": "44",
 "type": "goto"
 },
-"44": {
+"49": {
 "character": "",
 "character_replacements": Array[Dictionary]([]),
-"id": "44",
-"next_id": "45",
+"id": "49",
+"next_id": "50",
 "next_id_after": "end!",
 "tags": PackedStringArray(),
 "text": "Quit",
@@ -355,62 +406,71 @@ lines = {
 "translation_key": "Quit",
 "type": "response"
 },
-"45": {
-"id": "45",
-"is_snippet": false,
-"next_id": "end",
-"parent_id": "44",
-"type": "goto"
-},
 "5": {
-"character": "Investigator",
+"character": "",
 "character_replacements": Array[Dictionary]([]),
 "id": "5",
 "next_id": "6",
+"next_id_after": "17",
 "parent_id": "3",
+"responses": PackedStringArray("5", "9"),
+"tags": PackedStringArray(),
+"text": "Hello, there",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "Hello, there",
+"type": "response"
+},
+"50": {
+"id": "50",
+"is_snippet": false,
+"next_id": "end",
+"parent_id": "49",
+"type": "goto"
+},
+"6": {
+"character": "Investigator",
+"character_replacements": Array[Dictionary]([]),
+"id": "6",
+"next_id": "7",
+"parent_id": "5",
+"tags": PackedStringArray(),
+"text": "General Kenobi...",
+"text_replacements": Array[Dictionary]([]),
+"translation_key": "General Kenobi...",
+"type": "dialogue"
+},
+"7": {
+"character": "Investigator",
+"character_replacements": Array[Dictionary]([]),
+"id": "7",
+"next_id": "8",
+"parent_id": "5",
 "tags": PackedStringArray(),
 "text": "There's no time to chat. You gotta save me!",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "There's no time to chat. You gotta save me!",
 "type": "dialogue"
 },
-"6": {
-"id": "6",
+"8": {
+"id": "8",
 "is_snippet": false,
-"next_id": "12",
-"parent_id": "3",
+"next_id": "17",
+"parent_id": "5",
 "type": "goto"
 },
-"7": {
+"9": {
 "character": "",
 "character_replacements": Array[Dictionary]([]),
-"id": "7",
-"next_id": "8",
-"next_id_after": "12",
+"id": "9",
+"next_id": "10",
+"next_id_after": "17",
+"parent_id": "3",
 "tags": PackedStringArray(),
 "text": "I'm here to save you",
 "text_replacements": Array[Dictionary]([]),
 "translation_key": "I'm here to save you",
 "type": "response"
-},
-"8": {
-"character": "Investigator",
-"character_replacements": Array[Dictionary]([]),
-"id": "8",
-"next_id": "9",
-"parent_id": "7",
-"tags": PackedStringArray(),
-"text": "Thanks to the heavens.",
-"text_replacements": Array[Dictionary]([]),
-"translation_key": "Thanks to the heavens.",
-"type": "dialogue"
-},
-"9": {
-"id": "9",
-"is_snippet": false,
-"next_id": "12",
-"parent_id": "7",
-"type": "goto"
 }
 }
-metadata/dialogue_manager_version = "2.32.2"
+raw_text = ""
+metadata/dialogue_manager_version = "2.33.1"

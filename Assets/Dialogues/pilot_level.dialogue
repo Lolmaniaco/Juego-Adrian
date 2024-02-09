@@ -1,12 +1,17 @@
 ~ trapped_inv_start
-Investigator: Oh my God. Where did you come from?
-- Hello, there
-	Investigator: General Kenobi...
-	Investigator: There's no time to chat. You gotta save me!
-	=> trapped_inv_solution
-- I'm here to save you
-	Investigator: Thanks to the heavens. 
-	=> trapped_inv_solution
+
+if keys["LV.1"] == false:
+	Investigator: Oh my God. Where did you come from?
+	- Hello, there
+		Investigator: General Kenobi...
+		Investigator: There's no time to chat. You gotta save me!
+		=> trapped_inv_solution
+	- I'm here to save you
+		Investigator: Thanks to the heavens. 
+		=> trapped_inv_solution
+else:
+	Investigator: Damn, son. You entered here without saying anything and in an instant you opened the door saving me!
+	Investigator: Thank you! You're my saviour.
 
 ~ trapped_inv_solution
 Investigator: The door is sealed. You need to reach the control room and open this oven or I'm fried chicken.
@@ -37,7 +42,7 @@ PC: Please, inform main command and await for orders.
 	PC: Send alert message to main command...
 	=> PC_options
 - Open ventilation system
-	PC: Opening ventilation from cell 1, 2 and 3... [wait=2]
+	PC: Opening ventilation from cell 1, 2 and 3... [next=auto]
 	PC: Alert! Depressurization detected. Ventilation system will shut down in 10 seconds.
 	do emit("open_vent")
 	=> END

@@ -24,6 +24,8 @@ func _ready():
 	start_main_quest.connect(_start_main_quest)
 	end_main_quest.connect(_end_main_quest)
 	
+	keys["LV.1"] = false
+	
 	var file = FileAccess.open(main_quests_doc, FileAccess.READ)
 	var iter:int = 0
 	while (not file.eof_reached()):
@@ -33,7 +35,7 @@ func _ready():
 	pass
 
 func player_have_key(key_name:String):
-	return keys.get(key_name)
+	return keys.get(key_name) #it should return false/true
 
 func player_give_key(key_name:String):
 	keys[key_name] = true

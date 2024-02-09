@@ -11,7 +11,7 @@ func open_vent():
 	vent.visible = false
 	vent.deactivate_door()
 	
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(10).timeout
 	tile_map.set_layer_modulate(1,"ff0000") #RED
 	vent.visible = true
 	vent.deactivate_door()
