@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_vqivt"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_3y46k"]
 
 [resource]
-script = ExtResource("1_vqivt")
+script = ExtResource("1_3y46k")
 using_states = PackedStringArray()
 titles = {
 "experiment_lab": "6",
@@ -32,6 +32,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "11",
 "next_id": "12",
+"notes": "",
 "tags": PackedStringArray(),
 "text": "The vent door could be opened, but the system is digitally locked.",
 "text_replacements": Array[Dictionary]([]),
@@ -43,6 +44,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "12",
 "next_id": "13",
+"notes": "",
 "tags": PackedStringArray(),
 "text": "I can't force it.",
 "text_replacements": Array[Dictionary]([]),
@@ -66,6 +68,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "16",
 "next_id": "17",
+"notes": "",
 "tags": PackedStringArray(),
 "text": "Correct security level card. Opening door.",
 "text_replacements": Array[Dictionary]([]),
@@ -89,6 +92,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "2",
 "next_id": "3",
+"notes": "",
 "tags": PackedStringArray(),
 "text": "Testing text",
 "text_replacements": Array[Dictionary]([]),
@@ -100,6 +104,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "20",
 "next_id": "21",
+"notes": "",
 "tags": PackedStringArray(),
 "text": "You don't have the security level to open this door.",
 "text_replacements": Array[Dictionary]([]),
@@ -129,6 +134,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "6",
 "next_id": "7",
+"notes": "",
 "tags": PackedStringArray(),
 "text": "The lab is currently running an experiment. Safe lock activated.",
 "text_replacements": Array[Dictionary]([]),
@@ -140,6 +146,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "7",
 "next_id": "8",
+"notes": "",
 "tags": PackedStringArray(),
 "text": "The door can either be opened from the inside or from the adminstrator console",
 "text_replacements": Array[Dictionary]([]),
@@ -153,4 +160,25 @@ lines = {
 "type": "goto"
 }
 }
-metadata/dialogue_manager_version = "2.32.2"
+raw_text = "~ start
+Testing text
+=> END
+
+~ experiment_lab
+The lab is currently running an experiment. Safe lock activated.
+The door can either be opened from the inside or from the adminstrator console
+=> END
+
+~ ventilation_closed
+The vent door could be opened, but the system is digitally locked.
+I can't force it.
+=> END
+
+~ have_key
+Correct security level card. Opening door.
+=> END
+
+~ havent_key
+You don't have the security level to open this door.
+=> END"
+metadata/dialogue_manager_version = "2.34.0"

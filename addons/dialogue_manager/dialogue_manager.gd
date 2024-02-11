@@ -68,9 +68,6 @@ var _node_properties: Array = []
 
 
 func _ready() -> void:
-	# Make the dialogue manager available as a singleton
-	Engine.register_singleton("DialogueManager", self)
-
 	# Cache the known Node2D properties
 	_node_properties = ["Script Variables"]
 	var temp_node: Node2D = Node2D.new()
@@ -95,8 +92,13 @@ func _ready() -> void:
 		if state:
 			game_states.append(state)
 
+	# Make the dialogue manager available as a singleton
+	if Engine.has_singleton("DialogueManager"):
+		Engine.unregister_singleton("DialogueManager")
+	Engine.register_singleton("DialogueManager", self)
+
 	# Connect up the C# signals if need be
-	if _has_dotnet_solution():
+	if DialogueSettings.has_dotnet_solution():
 		_get_dotnet_dialogue_manager().Prepare()
 
 
@@ -273,7 +275,20 @@ func show_example_dialogue_balloon(resource: DialogueResource, title: String = "
 
 ## Show the configured dialogue balloon
 func show_dialogue_balloon(resource: DialogueResource, title: String = "", extra_game_states: Array = []) -> Node:
-	var balloon: Node = load(DialogueSettings.get_setting("balloon_path", _get_example_balloon_path())).instantiate()
+	var balloon_path: String = DialogueSettings.get_setting("balloon_path", _get_example_balloon_path())
+	if not ResourceLoader.exists(balloon_path):
+		balloon_path = _get_example_balloon_path()
+	return show_dialogue_balloon_scene(balloon_path, resource, title, extra_game_states)
+
+
+## Show a given balloon scene
+func show_dialogue_balloon_scene(balloon_scene, resource: DialogueResource, title: String = "", extra_game_states: Array = []) -> Node:
+	if balloon_scene is String:
+		balloon_scene = load(balloon_scene)
+	if balloon_scene is PackedScene:
+		balloon_scene = balloon_scene.instantiate()
+
+	var balloon: Node = balloon_scene
 	get_current_scene.call().add_child(balloon)
 	if balloon.has_method("start"):
 		balloon.start(resource, title, extra_game_states)
@@ -292,10 +307,6 @@ func _get_example_balloon_path() -> String:
 
 
 ### Dotnet bridge
-
-
-func _has_dotnet_solution() -> bool:
-	return DialogueSettings.has_dot_net_solution()
 
 
 func _get_dotnet_dialogue_manager() -> Node:
@@ -1112,7 +1123,7 @@ func thing_has_method(thing, method: String, args: Array) -> bool:
 	if thing.has_method(method):
 		return true
 
-	if method.to_snake_case() != method and _has_dotnet_solution():
+	if method.to_snake_case() != method and DialogueSettings.has_dotnet_solution():
 		# If we get this far then the method might be a C# method with a Task return type
 		return _get_dotnet_dialogue_manager().ThingHasMethod(thing, method)
 

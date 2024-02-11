@@ -26,7 +26,7 @@ visible = false
 
 [node name="Player" parent="." instance=ExtResource("1_qnto4")]
 z_index = 100
-position = Vector2(-872, 325)
+position = Vector2(1529, 769)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false

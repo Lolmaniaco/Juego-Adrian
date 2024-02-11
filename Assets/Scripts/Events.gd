@@ -10,6 +10,7 @@ var can_talk:bool = false
 var can_hide:bool = false
 var player_move:float 
 var last_character_spoken:String 
+var talked_to_trapped: bool = false
 
 func set_last_character_spoken_to(character:String):
 	last_character_spoken = character

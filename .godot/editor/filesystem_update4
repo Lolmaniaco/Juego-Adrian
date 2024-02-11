@@ -5,8 +5,7 @@ res://Assets/themes/default_theme.tres
 res://Assets/Scenes/World/main.tres
 res://Assets/Scenes/pilot_level.tscn
 res://Assets/Scenes/NPCs/npc.tscn
-res://Assets/Scenes/test_world.tscn
 res://Assets/Scenes/Player/player.tscn
-res://Assets/Scenes/World/door.tscn
 res://Assets/Scenes/UI/death_report.tscn
-res://Assets/Scripts/journal.gd
+res://Assets/Scenes/World/door.tscn
+res://Assets/Scenes/test_world.tscn

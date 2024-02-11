@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_fux6x"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_dhjmh"]
 
 [resource]
-script = ExtResource("1_fux6x")
+script = ExtResource("1_dhjmh")
 using_states = PackedStringArray()
 titles = {
 "start": "2",
@@ -23,6 +23,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "10",
 "next_id": "11",
+"notes": "",
 "parent_id": "8",
 "tags": PackedStringArray(),
 "text": "Would you do me the favour?",
@@ -36,6 +37,7 @@ lines = {
 "id": "11",
 "next_id": "12",
 "next_id_after": "15",
+"notes": "",
 "parent_id": "8",
 "responses": PackedStringArray("11", "14"),
 "tags": PackedStringArray(),
@@ -87,6 +89,7 @@ lines = {
 "id": "14",
 "next_id": "15",
 "next_id_after": "15",
+"notes": "",
 "parent_id": "8",
 "tags": PackedStringArray(),
 "text": "Na, passing",
@@ -122,6 +125,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "17",
 "next_id": "18",
+"notes": "",
 "parent_id": "2",
 "tags": PackedStringArray(),
 "text": "Now, if you let me be... I'll be selling some melones, bye.",
@@ -185,6 +189,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "21",
 "next_id": "22",
+"notes": "",
 "parent_id": "20",
 "tags": PackedStringArray(),
 "text": "Hi, friend. Have you gathered my melones?",
@@ -198,6 +203,7 @@ lines = {
 "id": "22",
 "next_id": "23",
 "next_id_after": "37",
+"notes": "",
 "parent_id": "20",
 "responses": PackedStringArray("22", "30"),
 "tags": PackedStringArray(),
@@ -233,6 +239,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "24",
 "next_id": "25",
+"notes": "",
 "parent_id": "23",
 "tags": PackedStringArray(),
 "text": "Thank you, my friend! Now I will be melon-rich or something. I've never played Dofus",
@@ -269,6 +276,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "27",
 "next_id": "28",
+"notes": "",
 "parent_id": "26",
 "tags": PackedStringArray(),
 "text": "What the hell are you talking about, pendejo. Don't fuck around with me!",
@@ -304,6 +312,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "3",
 "next_id": "4",
+"notes": "",
 "parent_id": "2",
 "tags": PackedStringArray(),
 "text": "Oh, I used to be an adventurer like you until an arrow hit me in the knee.",
@@ -317,6 +326,7 @@ lines = {
 "id": "30",
 "next_id": "31",
 "next_id_after": "32",
+"notes": "",
 "parent_id": "20",
 "tags": PackedStringArray(),
 "text": "No, I haven't been able to",
@@ -329,6 +339,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "31",
 "next_id": "32",
+"notes": "",
 "parent_id": "30",
 "tags": PackedStringArray(),
 "text": "Okay, no problem. There is no prisa.",
@@ -370,6 +381,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "37",
 "next_id": "38",
+"notes": "",
 "tags": PackedStringArray(),
 "text": "[[Hi|Hello|Howdy]], this is some dialogue.",
 "text_replacements": Array[Dictionary]([]),
@@ -381,6 +393,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "38",
 "next_id": "39",
+"notes": "",
 "tags": PackedStringArray(),
 "text": "Here are some choices.",
 "text_replacements": Array[Dictionary]([]),
@@ -393,6 +406,7 @@ lines = {
 "id": "39",
 "next_id": "40",
 "next_id_after": "45",
+"notes": "",
 "responses": PackedStringArray("39", "41", "43", "44"),
 "tags": PackedStringArray(),
 "text": "First one",
@@ -406,6 +420,7 @@ lines = {
 "id": "4",
 "next_id": "5",
 "next_id_after": "17",
+"notes": "",
 "parent_id": "2",
 "responses": PackedStringArray("4", "6", "8"),
 "tags": PackedStringArray(),
@@ -419,6 +434,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "40",
 "next_id": "45",
+"notes": "",
 "parent_id": "39",
 "tags": PackedStringArray(),
 "text": "You picked the first one.",
@@ -432,6 +448,7 @@ lines = {
 "id": "41",
 "next_id": "42",
 "next_id_after": "45",
+"notes": "",
 "tags": PackedStringArray(),
 "text": "Second one",
 "text_replacements": Array[Dictionary]([]),
@@ -443,6 +460,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "42",
 "next_id": "45",
+"notes": "",
 "parent_id": "41",
 "tags": PackedStringArray(),
 "text": "You picked the second one.",
@@ -456,6 +474,7 @@ lines = {
 "id": "43",
 "next_id": "2",
 "next_id_after": "45",
+"notes": "",
 "tags": PackedStringArray(),
 "text": "Start again",
 "text_replacements": Array[Dictionary]([]),
@@ -468,6 +487,7 @@ lines = {
 "id": "44",
 "next_id": "45",
 "next_id_after": "45",
+"notes": "",
 "tags": PackedStringArray(),
 "text": "End the conversation",
 "text_replacements": Array[Dictionary]([]),
@@ -503,6 +523,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "47",
 "next_id": "48",
+"notes": "",
 "tags": PackedStringArray(),
 "text": "For more information see the online documentation.",
 "text_replacements": Array[Dictionary]([]),
@@ -538,6 +559,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "5",
 "next_id": "17",
+"notes": "",
 "parent_id": "4",
 "tags": PackedStringArray(),
 "text": "I can't understand what you say, my friend.",
@@ -551,6 +573,7 @@ lines = {
 "id": "6",
 "next_id": "7",
 "next_id_after": "17",
+"notes": "",
 "parent_id": "2",
 "tags": PackedStringArray(),
 "text": "Es eso una referencia a Dofus?",
@@ -563,6 +586,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "7",
 "next_id": "17",
+"notes": "",
 "parent_id": "6",
 "tags": PackedStringArray(),
 "text": "Oh, yeah, I like Dofus a lot!",
@@ -576,6 +600,7 @@ lines = {
 "id": "8",
 "next_id": "9",
 "next_id_after": "17",
+"notes": "",
 "parent_id": "2",
 "tags": PackedStringArray(),
 "text": "Hey, do you need anything, my amigo?",
@@ -588,6 +613,7 @@ lines = {
 "character_replacements": Array[Dictionary]([]),
 "id": "9",
 "next_id": "10",
+"notes": "",
 "parent_id": "8",
 "tags": PackedStringArray(),
 "text": "Now that you say that... I'd be good if you can help me sell some melones...",
@@ -596,4 +622,53 @@ lines = {
 "type": "dialogue"
 }
 }
-metadata/dialogue_manager_version = "2.32.2"
+raw_text = "~ start
+if mission_0 == false:
+	Guturu: Oh, I used to be an adventurer like you until an arrow hit me in the knee.
+	- Por qué estás hablando en inglés, Guturu?
+		Guturu: I can't understand what you say, my friend.
+	- Es eso una referencia a Dofus?
+		Guturu: Oh, yeah, I like Dofus a lot!
+	- Hey, do you need anything, my amigo?
+		Guturu: Now that you say that... I'd be good if you can help me sell some melones...
+		Guturu: Would you do me the favour?
+		- Yes, of course
+			set mission_0 = true
+			do emit(\"start_main_quest\", 0)
+		- Na, passing
+		do emit(\"dialogue_ended\")
+		=> END
+	Guturu: Now, if you let me be... I'll be selling some melones, bye.
+	do emit(\"dialogue_ended\")
+	=> END
+else:
+	Guturu: Hi, friend. Have you gathered my melones?
+	- Yes, here you have.
+		if watermelon == 2:
+			Guturu: Thank you, my friend! Now I will be melon-rich or something. I've never played Dofus
+			do emit(\"end_main_quest\")
+		else:
+			Guturu: What the hell are you talking about, pendejo. Don't fuck around with me!
+		do emit(\"dialogue_ended\")
+		=> END
+	- No, I haven't been able to
+		Guturu: Okay, no problem. There is no prisa.
+	do emit(\"dialogue_ended\")
+	=> END
+
+~ start2
+
+Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+Nathan: Here are some choices.
+- First one
+	Nathan: You picked the first one.
+- Second one
+	Nathan: You picked the second one.
+- Start again => start
+- End the conversation 
+do emit(\"test_signal\", \"signal emitted\") 
+=> END
+Nathan: For more information see the online documentation.
+do emit(\"test_signal\", \"signal emitted\")
+=> END"
+metadata/dialogue_manager_version = "2.33.1"

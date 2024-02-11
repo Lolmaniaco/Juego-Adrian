@@ -83,7 +83,7 @@ position = Vector2(-50, 490)
 
 [node name="Voidling" parent="." instance=ExtResource("9_15xlm")]
 z_index = 20
-position = Vector2(220, 55)
+position = Vector2(331, 57)
 
 [node name="Fissure" parent="." instance=ExtResource("10_0iidw")]
 position = Vector2(655, 486)
