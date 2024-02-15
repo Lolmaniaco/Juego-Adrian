@@ -1,15 +1,31 @@
+@tool
 extends StaticBody2D
 
 enum behaviour {AUTOMATIC, MANUAL}
-@export var DOOR_BEHAVIOUR = behaviour.AUTOMATIC
+## Set the door either in automatic or in manual mode
+@export var DOOR_BEHAVIOUR = behaviour.AUTOMATIC:
+	set(v):
+		DOOR_BEHAVIOUR = v
+		notify_property_list_changed()
+var DOOR_SIDE_OPENS:int
 
-enum side {left, right, both}
-@export var DOOR_SIDE_OPENS = side.left
+## Set a dialogue resource. If one's selected, 'door message' variable appears  
+## to set the line from where it's going to be played
+var dialogue_resource: DialogueResource:
+	set(v):
+		dialogue_resource = v
+		notify_property_list_changed()
+## Title (String) of the line that is going to be played 
+var door_message:String
 
-@export var dialogue_resource: DialogueResource
-@export var door_message:String = ""
-@export var need_key:bool = false
-@export var key_needed:String = ""
+## Set if the door needs a key to be opened. If yes, 'key name' variable will 
+## appear to set the name of the key needed to open this door.
+var need_key:bool:
+	set(v):
+		need_key = v
+		notify_property_list_changed()
+## Name (String) of the key needed.
+var key_name:String
 
 @onready var collision_shape_2d = $CollisionShape2D
 @onready var opened_door_sprite_left = $OpenedDoorSpriteLeft
@@ -22,6 +38,45 @@ var door_opened: bool = false
 var temp_player: Player = null
 var already_opened: bool = false
 
+func _get_property_list():
+	var property_list = []
+	if DOOR_BEHAVIOUR == behaviour.MANUAL:
+		property_list.append({
+			"hint": PROPERTY_HINT_RESOURCE_TYPE,
+			"hint_string": "DialogueResource",
+			"name": "dialogue_resource",
+			"type": TYPE_OBJECT 
+		})
+		if dialogue_resource != null:
+			property_list.append({
+				"hint": PROPERTY_HINT_NONE,
+				"usage": PROPERTY_USAGE_DEFAULT,
+				"name": "door_message",
+				"type": TYPE_STRING
+			})
+		property_list.append({
+			"hint": PROPERTY_HINT_ENUM,
+			"hint_string": "Left,Right,Both",
+			"name": "DOOR_SIDE_OPENS",
+			"type": TYPE_INT
+		})
+		property_list.append({
+			"hint": PROPERTY_HINT_NONE,
+			"usage": PROPERTY_USAGE_DEFAULT,
+			"name": "need_key",
+			"type": TYPE_BOOL
+		})
+		if need_key == true:
+			property_list.append({
+				"hint": PROPERTY_HINT_NONE,
+				"hint_string": "null",
+				"usage": PROPERTY_USAGE_DEFAULT,
+				"name": "key_name",
+				"type": TYPE_STRING
+			})
+	
+	return property_list
+
 func _unhandled_input(event):
 	if event.is_action_pressed("Action") and player_near:
 		if not need_key:
@@ -30,7 +85,7 @@ func _unhandled_input(event):
 			else:
 				open_unlocked_door()
 		else:
-			var got_key = Journal.player_have_key(key_needed)
+			var got_key = Journal.player_have_key(key_name)
 			if got_key == true:
 				need_key = false
 				DialogueManager.show_dialogue_balloon(dialogue_resource, "have_key")
@@ -39,13 +94,13 @@ func _unhandled_input(event):
 				DialogueManager.show_dialogue_balloon(dialogue_resource, "havent_key")
 
 func open_unlocked_door():
-	if DOOR_SIDE_OPENS == side.right:
+	if DOOR_SIDE_OPENS == 1:
 		if already_opened or temp_player.global_position.x > global_position.x:
 			already_opened = true
 			open_door("right_side")
 		else:
 			DialogueManager.show_dialogue_balloon(dialogue_resource, door_message)
-	elif DOOR_SIDE_OPENS == side.left:
+	elif DOOR_SIDE_OPENS == 0:
 		if already_opened or temp_player.global_position.x < global_position.x: 
 			already_opened = true
 			open_door("left_side")
@@ -87,10 +142,10 @@ func _on_area_2d_body_entered(body):
 	temp_player = body
 	if DOOR_BEHAVIOUR == behaviour.AUTOMATIC:
 		hysteresis.stop()
-		if DOOR_SIDE_OPENS == side.right:
+		if DOOR_SIDE_OPENS == 1:
 			if temp_player.global_position.x > global_position.x:
 				open_door("right_side")
-		elif DOOR_SIDE_OPENS == side.left:
+		elif DOOR_SIDE_OPENS == 0:
 			if temp_player.global_position.x < global_position.x:
 				open_door("left_side")
 		else:

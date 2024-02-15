@@ -1,10 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://b1yfro7o2476p"]
+[gd_scene load_steps=14 format=3 uid="uid://b1yfro7o2476p"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/pilot_level.gd" id="1_68qmj"]
 [ext_resource type="TileSet" uid="uid://dm00npul4akml" path="res://Assets/Scenes/World/main.tres" id="1_rgrf4"]
 [ext_resource type="PackedScene" uid="uid://flbmvlv3xnp6" path="res://Assets/Scenes/Enemies/fissure.tscn" id="2_3e3i7"]
 [ext_resource type="PackedScene" uid="uid://c2qr0iihsuptd" path="res://Assets/Scenes/World/door.tscn" id="3_4j4gg"]
-[ext_resource type="Resource" uid="uid://bu1eonqu56l25" path="res://Assets/Dialogues/door_locked.dialogue" id="4_a1mnu"]
 [ext_resource type="PackedScene" uid="uid://dyvoekdl5sppi" path="res://Assets/Scenes/NPCs/npc.tscn" id="5_dqbxy"]
 [ext_resource type="Resource" uid="uid://r2b3iog3a2e0" path="res://Assets/Dialogues/pilot_level.dialogue" id="6_8e8o7"]
 [ext_resource type="PackedScene" uid="uid://brfwokkxbqdni" path="res://Assets/Scenes/World/elevator.tscn" id="7_8480q"]
@@ -37,45 +36,38 @@ scale = Vector2(3.71007, 2.86235)
 position = Vector2(-0.0554657, -0.0666199)
 shape = SubResource("RectangleShape2D_a5qnf")
 
-[node name="Door" parent="." instance=ExtResource("3_4j4gg")]
+[node name="LabDoor" parent="." instance=ExtResource("3_4j4gg")]
+visible = true
 position = Vector2(-1218, 1064)
-DOOR_BEHAVIOUR = 1
-dialogue_resource = ExtResource("4_a1mnu")
-door_message = "experiment_lab"
 
-[node name="Door2" parent="." instance=ExtResource("3_4j4gg")]
+[node name="AutomaticDoor" parent="." instance=ExtResource("3_4j4gg")]
+visible = true
 position = Vector2(-448, 1064)
-DOOR_SIDE_OPENS = 2
+DOOR_BEHAVIOUR = 0
 
-[node name="Door3" parent="." instance=ExtResource("3_4j4gg")]
+[node name="AutomaticDoor2" parent="." instance=ExtResource("3_4j4gg")]
+visible = true
 position = Vector2(-976, 1064)
-DOOR_SIDE_OPENS = 2
+DOOR_BEHAVIOUR = 0
 
-[node name="Door4" parent="." instance=ExtResource("3_4j4gg")]
+[node name="AutomaticDoor3" parent="." instance=ExtResource("3_4j4gg")]
+visible = true
 position = Vector2(751, 1065)
-DOOR_SIDE_OPENS = 2
+DOOR_BEHAVIOUR = 0
 
 [node name="LockedDoor" parent="." instance=ExtResource("3_4j4gg")]
+visible = true
 position = Vector2(-1016, 616)
-DOOR_BEHAVIOUR = 1
-DOOR_SIDE_OPENS = 2
-dialogue_resource = ExtResource("4_a1mnu")
-need_key = true
-key_needed = "LV.1"
+key_name = "LV.1"
 
 [node name="LockedDoor2" parent="." instance=ExtResource("3_4j4gg")]
+visible = true
 position = Vector2(454, 1064)
-DOOR_BEHAVIOUR = 1
-DOOR_SIDE_OPENS = 2
-dialogue_resource = ExtResource("4_a1mnu")
-need_key = true
-key_needed = "LV.1"
+key_name = "LV.1"
 
 [node name="Vent" parent="." instance=ExtResource("3_4j4gg")]
+visible = true
 position = Vector2(-55, 27)
-DOOR_BEHAVIOUR = 1
-dialogue_resource = ExtResource("4_a1mnu")
-door_message = "ventilation_closed"
 
 [node name="NPC" parent="." instance=ExtResource("5_dqbxy")]
 position = Vector2(-639, 590)
