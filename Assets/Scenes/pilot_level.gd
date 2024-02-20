@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var vent = $Vent
-@onready var tile_map = $TileMap
+@onready var vent = $World/Vent
+@onready var tile_map = $World/TileMap
 
 func _ready():
 	Events.open_vent.connect(open_vent)

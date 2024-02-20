@@ -24,15 +24,15 @@ visible = false
 [node name="start_menu" parent="UI" instance=ExtResource("3_ty156")]
 visible = false
 
-[node name="Player" parent="." instance=ExtResource("1_qnto4")]
-z_index = 100
-position = Vector2(1529, 769)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
 
+[node name="Player" parent="." instance=ExtResource("1_qnto4")]
+z_index = 100
+position = Vector2(1271, 1029)
+
 [node name="PilotLevel" parent="." instance=ExtResource("6_cj427")]
-position = Vector2(243, -259)
+position = Vector2(4, -1)
 
 [connection signal="show_main_quest" from="UI/start_menu" to="UI/QuestsBox" method="_on_start_menu_show_main_quest"]
 [connection signal="show_secondary_quests" from="UI/start_menu" to="UI/QuestsBox" method="_on_start_menu_show_secondary_quests"]

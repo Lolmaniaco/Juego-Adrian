@@ -68,7 +68,7 @@ func _start_main_quest(index:int):
 func get_secondary_quests():
 	return secondary_quests
 
-func _on_player_dead():
+func _on_player_dead(_value: String):
 	mission_0 = false
 	watermelon = 0
 	actual_main_quest = -1
