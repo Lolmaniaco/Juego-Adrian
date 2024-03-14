@@ -142,17 +142,17 @@ func _on_area_2d_body_entered(body):
 	temp_player = body
 	if DOOR_BEHAVIOUR == behaviour.AUTOMATIC:
 		hysteresis.stop()
-		if DOOR_SIDE_OPENS == 1:
+		'''if DOOR_SIDE_OPENS == 1:
 			if temp_player.global_position.x > global_position.x:
 				open_door("right_side")
 		elif DOOR_SIDE_OPENS == 0:
 			if temp_player.global_position.x < global_position.x:
 				open_door("left_side")
+		else:'''
+		if temp_player.global_position.x < global_position.x:
+			open_door("left_side")
 		else:
-			if temp_player.global_position.x < global_position.x:
-				open_door("left_side")
-			else:
-				open_door("right_side")
+			open_door("right_side")
 	else:
 		player_near = true
 

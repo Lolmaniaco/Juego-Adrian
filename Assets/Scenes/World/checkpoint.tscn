@@ -7,6 +7,9 @@ size = Vector2(44, 158)
 
 [node name="Checkpoint" type="Area2D"]
 script = ExtResource("1_8xivb")
+checkpoint_name = 1.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vbgkm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

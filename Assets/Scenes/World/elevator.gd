@@ -3,12 +3,17 @@ extends Path2D
 enum pos {FINISH, START}
 @export var ACTUAL_POS = pos.START
 @export var ANIM_SPEED: float = 1
+@export var progress_ratio: float = 0
 
 @onready var animation_player = $PathFollow2D/StaticBody2D/AnimationPlayer
 @onready var remote_transform_2d = $PathFollow2D/StaticBody2D/RemoteTransform2D
+@onready var path_follow_2d = $PathFollow2D
 
 var temp_player: Player = null
 var activate_elevator: bool = false
+
+func _ready():
+	path_follow_2d.progress_ratio = progress_ratio
 
 func _process(_delta):
 	if not temp_player: return

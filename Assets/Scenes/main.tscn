@@ -29,10 +29,10 @@ ignore_rotation = false
 
 [node name="Player" parent="." instance=ExtResource("1_qnto4")]
 z_index = 100
-position = Vector2(1271, 1029)
+position = Vector2(1701, -800)
 
 [node name="PilotLevel" parent="." instance=ExtResource("6_cj427")]
-position = Vector2(4, -1)
+position = Vector2(720, -1036)
 
 [connection signal="show_main_quest" from="UI/start_menu" to="UI/QuestsBox" method="_on_start_menu_show_main_quest"]
 [connection signal="show_secondary_quests" from="UI/start_menu" to="UI/QuestsBox" method="_on_start_menu_show_secondary_quests"]

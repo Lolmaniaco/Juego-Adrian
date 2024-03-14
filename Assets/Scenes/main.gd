@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player = $Player
 @onready var main_camera = $Camera2D
+var player_dir = preload("res://Assets/Scenes/Player/player.tscn")
 
 @onready var start_menu = $UI/start_menu
 @onready var death_report = $UI/DeathReport
@@ -10,8 +11,9 @@ extends Node2D
 enum {NORMAL, DEATH_REPORT}
 var state = NORMAL
 
-var player_name = "Testes"
-var last_character_spoken = ""
+var player_name:String = "Lolmaniaco"
+var last_character_spoken:String = ""
+var checkpoint_pos:Vector2 = Vector2.ZERO
 
 func _ready():
 	player.connect_camera(main_camera)
@@ -32,12 +34,21 @@ func normal_state():
 
 func death_report_state():
 	if Input.is_action_just_pressed("ChangeGravity"):
-		get_tree().reload_current_scene()
+		var new_player = player_dir.instantiate()
+		add_child(new_player)
+		new_player.global_position = checkpoint_pos
+		player = new_player
+		player.connect_camera(main_camera)
+		
+		death_report.visible = false
+		quests_box.visible = true
+		state = NORMAL
 
 func _on_dialogue_ended(_resource:DialogueResource):
 	last_character_spoken = Events.get_last_character_spoken_to()
 
 func _on_player_dead(death_cause:String):
+	checkpoint_pos = Journal.get_checkpoint_pos()
 	var memories = ""
 	match last_character_spoken:
 		"Berta": memories = "I kept studying those dark flashes until darkness came for me. Now, I write these memories with my last remains knowing that we won't see each other again, nor our beloved Earth..."

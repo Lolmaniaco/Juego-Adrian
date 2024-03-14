@@ -1,8 +1,15 @@
-res://Assets/Scenes/pilot_level.tscn
+res://Assets/Scenes/World/Checkpoint.gd
+res://Assets/Scenes/World/checkpoint.tscn
 res://Assets/Scenes/NPCs/npc.gd
 res://Assets/Scenes/pilot_level.gd
 res://Assets/themes/default_theme.tres
 res://Assets/Scenes/World/main.tres
+res://Assets/Scripts/journal.gd
 res://Assets/Scenes/main.tscn
+res://Assets/Scenes/pilot_level.tscn
 res://Assets/Scenes/Enemies/fissure.tscn
-res://Assets/Scenes/World/checkpoint.tscn
+res://Assets/Scenes/World/door.tscn
+res://Assets/Scenes/World/door.gd
+res://Assets/Scenes/World/elevator.tscn
+res://Assets/Scenes/World/elevator.gd
+res://Assets/Scenes/main.gd

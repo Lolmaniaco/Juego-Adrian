@@ -9,15 +9,16 @@ signal erase_main_quest
 var main_quest_name: String = ""
 var main_quest_description: String = ""
 
-var secondary_quests: Dictionary = {}
+const main_quests_doc = "res://main_quests_doc.txt"
 var main_quests: Dictionary = {}
+var secondary_quests: Dictionary = {}
+
 var bool_main_quests: Array
 var actual_main_quest: int = -1
-const main_quests_doc = "res://main_quests_doc.txt"
-var keys: Dictionary = {}
 
-var watermelon:int = 0
-var mission_0:bool = false
+var keys: Dictionary = {}
+var actual_checkpoint: float = -1
+var actual_checkpoint_pos: Vector2 = Vector2.ZERO
 
 func _ready():
 	Events.player_dead.connect(_on_player_dead)
@@ -65,10 +66,20 @@ func _start_main_quest(index:int):
 	else:
 		print("Fatal error. Previous main quest not ended correctly.")
 
+func set_checkpoint(new_checkpoint, checkpoint_pos):
+	if new_checkpoint > actual_checkpoint:
+		actual_checkpoint = new_checkpoint
+		actual_checkpoint_pos = checkpoint_pos
+		print("Actual Checkpoint: ", actual_checkpoint)
+
+func get_checkpoint():
+	return actual_checkpoint
+
+func get_checkpoint_pos():
+	return actual_checkpoint_pos
+
 func get_secondary_quests():
 	return secondary_quests
 
 func _on_player_dead(_value: String):
-	mission_0 = false
-	watermelon = 0
 	actual_main_quest = -1

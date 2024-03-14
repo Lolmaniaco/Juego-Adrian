@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b1yfro7o2476p"]
+[gd_scene load_steps=16 format=3 uid="uid://b1yfro7o2476p"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/pilot_level.gd" id="1_68qmj"]
 [ext_resource type="TileSet" uid="uid://dm00npul4akml" path="res://Assets/Scenes/World/main.tres" id="1_rgrf4"]
@@ -7,9 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dyvoekdl5sppi" path="res://Assets/Scenes/NPCs/npc.tscn" id="5_dqbxy"]
 [ext_resource type="Resource" uid="uid://r2b3iog3a2e0" path="res://Assets/Dialogues/pilot_level.dialogue" id="6_8e8o7"]
 [ext_resource type="PackedScene" uid="uid://brfwokkxbqdni" path="res://Assets/Scenes/World/elevator.tscn" id="7_8480q"]
+[ext_resource type="Resource" uid="uid://bu1eonqu56l25" path="res://Assets/Dialogues/door_locked.dialogue" id="7_fm0h2"]
 [ext_resource type="PackedScene" uid="uid://cdnmg2t232fjj" path="res://Assets/Scenes/Enemies/voidling.tscn" id="8_tpvc4"]
 [ext_resource type="PackedScene" uid="uid://cxbseid64s8u0" path="res://Assets/Scenes/World/hiding.tscn" id="10_17fw1"]
 [ext_resource type="Texture2D" uid="uid://lfsu8myhmfpn" path="res://Assets/Sprites/TestFloor/tiles_packed.png" id="11_8thna"]
+[ext_resource type="PackedScene" uid="uid://btdjiph2g0xim" path="res://Assets/Scenes/World/checkpoint.tscn" id="12_nkvon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5qnf"]
 size = Vector2(13.209, 49.8048)
@@ -49,7 +51,7 @@ dialogues = ["PC_online", "PC_options"]
 [node name="Hazards&Enemies" type="Node2D" parent="."]
 
 [node name="Fissure" parent="Hazards&Enemies" node_paths=PackedStringArray("collision_shape") instance=ExtResource("2_3e3i7")]
-position = Vector2(-721, 26)
+position = Vector2(-785, 1006)
 rotation = 0.391437
 scale = Vector2(3.71007, 2.86235)
 collision_shape = NodePath("CollisionShape2D")
@@ -89,6 +91,9 @@ position = Vector2(1582, 1031)
 [node name="LabDoor" parent="World" instance=ExtResource("3_4j4gg")]
 visible = true
 position = Vector2(-1218, 1064)
+dialogue_resource = ExtResource("7_fm0h2")
+door_message = "havent_key"
+key_name = "LV.1"
 
 [node name="AutomaticDoor" parent="World" instance=ExtResource("3_4j4gg")]
 visible = true
@@ -98,7 +103,9 @@ DOOR_BEHAVIOUR = 0
 [node name="AutomaticDoor2" parent="World" instance=ExtResource("3_4j4gg")]
 visible = true
 position = Vector2(-976, 1064)
-DOOR_BEHAVIOUR = 0
+dialogue_resource = ExtResource("7_fm0h2")
+door_message = "experiment_lab"
+need_key = false
 
 [node name="AutomaticDoor3" parent="World" instance=ExtResource("3_4j4gg")]
 visible = true
@@ -108,16 +115,22 @@ DOOR_BEHAVIOUR = 0
 [node name="LockedDoor" parent="World" instance=ExtResource("3_4j4gg")]
 visible = true
 position = Vector2(-1016, 616)
+dialogue_resource = ExtResource("7_fm0h2")
+door_message = "havent_key"
 key_name = "LV.1"
 
 [node name="LockedDoor2" parent="World" instance=ExtResource("3_4j4gg")]
 visible = true
 position = Vector2(454, 1064)
+dialogue_resource = ExtResource("7_fm0h2")
+door_message = "havent_key"
 key_name = "LV.1"
 
 [node name="Vent" parent="World" instance=ExtResource("3_4j4gg")]
 visible = true
 position = Vector2(-55, 27)
+dialogue_resource = ExtResource("7_fm0h2")
+door_message = "ventilation_closed"
 
 [node name="TileMap" type="TileMap" parent="World"]
 rotation = 3.14159
@@ -132,6 +145,12 @@ layer_1/tile_data = PackedInt32Array(-196605, 589827, 4, -262141, 589827, 4, -32
 [node name="Elevator" parent="World" instance=ExtResource("7_8480q")]
 position = Vector2(-1320, 1081)
 curve = SubResource("Curve2D_1unli")
+ACTUAL_POS = 0
+
+[node name="Checkpoint" parent="World" instance=ExtResource("12_nkvon")]
+position = Vector2(-1105, 1027)
+collision_layer = 7
+collision_mask = 7
 
 [node name="Hiding" parent="World" instance=ExtResource("10_17fw1")]
 position = Vector2(1406, 1064)
