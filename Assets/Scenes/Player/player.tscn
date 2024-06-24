@@ -480,9 +480,11 @@ libraries = {
 }
 
 [node name="StandUpCollision" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_tyj6r")
 
 [node name="CrouchCollision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 15)
 shape = SubResource("CircleShape2D_8wddf")
 disabled = true

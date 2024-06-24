@@ -89,45 +89,38 @@ position = Vector2(1582, 1031)
 [node name="World" type="Node2D" parent="."]
 
 [node name="LabDoor" parent="World" instance=ExtResource("3_4j4gg")]
-visible = true
 position = Vector2(-1218, 1064)
 dialogue_resource = ExtResource("7_fm0h2")
 door_message = "havent_key"
 key_name = "LV.1"
 
 [node name="AutomaticDoor" parent="World" instance=ExtResource("3_4j4gg")]
-visible = true
 position = Vector2(-448, 1064)
 DOOR_BEHAVIOUR = 0
 
 [node name="AutomaticDoor2" parent="World" instance=ExtResource("3_4j4gg")]
-visible = true
 position = Vector2(-976, 1064)
 dialogue_resource = ExtResource("7_fm0h2")
 door_message = "experiment_lab"
 need_key = false
 
 [node name="AutomaticDoor3" parent="World" instance=ExtResource("3_4j4gg")]
-visible = true
 position = Vector2(751, 1065)
 DOOR_BEHAVIOUR = 0
 
 [node name="LockedDoor" parent="World" instance=ExtResource("3_4j4gg")]
-visible = true
 position = Vector2(-1016, 616)
 dialogue_resource = ExtResource("7_fm0h2")
 door_message = "havent_key"
 key_name = "LV.1"
 
 [node name="LockedDoor2" parent="World" instance=ExtResource("3_4j4gg")]
-visible = true
 position = Vector2(454, 1064)
 dialogue_resource = ExtResource("7_fm0h2")
 door_message = "havent_key"
 key_name = "LV.1"
 
 [node name="Vent" parent="World" instance=ExtResource("3_4j4gg")]
-visible = true
 position = Vector2(-55, 27)
 dialogue_resource = ExtResource("7_fm0h2")
 door_message = "ventilation_closed"
